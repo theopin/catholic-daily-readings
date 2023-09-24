@@ -134,7 +134,7 @@ function Order() {
   
 
   return (
-    <div class="container">
+    <div className="container">
       <Theme title={sampleData.header}/>
       <Reading title={sampleData.readings[0].header} verse={sampleData.readings[0].reference} text={sampleData.readings[0].formattedText}/>
       <Responsorial title={sampleData.readings[1].header} verse={sampleData.readings[1].reference} text={sampleData.readings[1].formattedText}/>

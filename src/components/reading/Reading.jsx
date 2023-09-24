@@ -7,13 +7,11 @@ function Reading(props) {
   // Component code here
 
   return (
-    <div class="reading">
+    <div className="reading">
       <Header title={props.title} verse={props.verse}/>
 
-      <div class="content">
-        <p>
-          {props.text}
-        </p>
+      <div className="content">
+        {props.text}
       </div>
     </div>
   );
