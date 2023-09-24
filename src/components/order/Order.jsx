@@ -1,10 +1,25 @@
-import React from "react";
+import React, {useState, useEffect }from "react";
 import Reading from "../reading/Reading";
 import "../../commons/Commons.css"; // Common/shared CSS
 import Responsorial from "../responsorial/Responsorial";
 import Theme from "../theme/Theme";
+import fetchDataFromExternalURL from "./OrderFetch";
 
 function Order() {
+  const [data, setData] = useState(null);
+
+
+  useEffect(() => {
+    console.log(101)
+    fetchDataFromExternalURL()
+      .then((response) => {
+        console.log(response)
+        setData(response);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
   const sampleData = {
     header: 'Twenty-fifth Sunday in Ordinary Time',
@@ -131,20 +146,30 @@ function Order() {
       }
     ]
   }
-  const currentDate = new Date()
-  const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-  const formattedDate = currentDate.toLocaleDateString('en-US', options); 
-  console.log(formattedDate)
-  
+  if(!data) {
+    return <div></div>
+  }
 
+  else if(!data.Mass_R2) {
+    return (
+      <div className="container">
+      <Theme title={sampleData.header} date={data.date}/>
+      <Reading title="First Reading" verse={data.Mass_R1.source} header= {data.Mass_R1.header}text={data.Mass_R1.text}/>
+      <Responsorial title="Responsorial Psalm" verse={data.Mass_Ps.source}  text={data.Mass_Ps.text}/>
+      <Responsorial title="Gospel Acclamation" verse={data.Mass_GA.source} text={data.Mass_GA.text}/>
+      <Reading title="Gospel" verse={data.Mass_G.source} header= {data.Mass_G.header} text={data.Mass_G.text}/>
+    </div>
+    )
+  }
+ 
   return (
     <div className="container">
-      <Theme title={sampleData.header} date={formattedDate}/>
-      <Reading title={sampleData.readings[0].header} verse={sampleData.readings[0].reference} text={sampleData.readings[0].formattedText}/>
-      <Responsorial title={sampleData.readings[1].header} verse={sampleData.readings[1].reference} text={sampleData.readings[1].formattedText}/>
-      <Reading title={sampleData.readings[2].header} verse={sampleData.readings[2].reference} text={sampleData.readings[2].formattedText}/>
-      <Responsorial title={sampleData.readings[3].header} verse={sampleData.readings[3].reference} text={sampleData.readings[3].formattedText}/>
-      <Reading title={sampleData.readings[4].header} verse={sampleData.readings[4].reference} text={sampleData.readings[4].formattedText}/>
+      <Theme title={sampleData.header} date={data.date}/>
+      <Reading title="First Reading" verse={data.Mass_R1.source} header= {data.Mass_R1.header} text={data.Mass_R1.text}/>
+      <Responsorial title="Responsorial Psalm" verse={data.Mass_Ps.source} text={data.Mass_Ps.text}/>
+      <Reading title="Second Reading" verse={data.Mass_R2.source} header= {data.Mass_R2.header} text={data.Mass_R2.text}/>
+      <Responsorial title="Gospel Acclamation" verse={data.Mass_GA.source} text={data.Mass_GA.text}/>
+      <Reading title="Gospel" verse={data.Mass_G.source} header= {data.Mass_G.header} text={data.Mass_G.text}/>
     </div>
   );
 }

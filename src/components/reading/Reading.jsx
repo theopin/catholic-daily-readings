@@ -5,14 +5,15 @@ import Header from "../header/Header";
 
 function Reading(props) {
   // Component code here
-
+    const decodedString = decodeHtmlEntities(props.text)
+    console.log(101, decodedString)
     const paragraphs = splitTextIntoParagraphs(
-      props.text
-        .replace(/\n/g, ' ')
-        .split(/(?<=[.!?] |[.!?]["']|[.!?]['"])/)
+      
+      decodedString
+        .split(/(?<=[.!?])\s*(?=[A-Z])/)
         .filter(sentence => sentence.trim() !== ''));
-
-
+        
+      console.log(paragraphs)
   const formattedParagraphs = paragraphs.map((paragraph, index) => (
     <p key={props.title+index} className="content">
       {paragraph}
@@ -29,6 +30,22 @@ function Reading(props) {
     </div>
   );
 }
+
+
+function decodeHtmlEntities(htmlString) {
+  // Create a temporary DOM element
+  const tempElement = document.createElement('div');
+  
+  // Set the HTML content of the temporary element
+  tempElement.innerHTML = htmlString;
+
+  // Retrieve the decoded text content
+  const decodedString = tempElement.textContent;
+
+  return decodedString;
+}
+
+
 
 function splitTextIntoParagraphs(sentences) {
   const newParagraphs = []
@@ -59,7 +76,6 @@ function splitTextIntoParagraphs(sentences) {
       }
     }
     
-    console.log(currParagraph, newParagraphs)
   });
 
   return newParagraphs
