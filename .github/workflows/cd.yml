@@ -2,7 +2,10 @@
 name: Continuous Deployment(Netlify) 
 on:
   push:
-  pull_request:
+    branches:
+      - main # Run the workflow only on pushes to the main branch
+
+      
 jobs:
   build:
     runs-on: ubuntu-22.04
