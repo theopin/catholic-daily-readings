@@ -131,11 +131,15 @@ function Order() {
       }
     ]
   }
+  const currentDate = new Date()
+  const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+  const formattedDate = currentDate.toLocaleDateString('en-US', options); 
+  console.log(formattedDate)
   
 
   return (
     <div className="container">
-      <Theme title={sampleData.header}/>
+      <Theme title={sampleData.header} date={formattedDate}/>
       <Reading title={sampleData.readings[0].header} verse={sampleData.readings[0].reference} text={sampleData.readings[0].formattedText}/>
       <Responsorial title={sampleData.readings[1].header} verse={sampleData.readings[1].reference} text={sampleData.readings[1].formattedText}/>
       <Reading title={sampleData.readings[2].header} verse={sampleData.readings[2].reference} text={sampleData.readings[2].formattedText}/>
