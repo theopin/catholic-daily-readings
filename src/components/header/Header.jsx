@@ -1,13 +1,13 @@
 import React from "react";
 import "./Header.css"; // Component-specific CSS
 
-function Header() {
+function Header(props) {
   // Component code here
 
   return (
       <div class="header">
-        <h3 class="title">First Reading</h3>
-        <h5 class="verse">Is 55:6-9</h5>
+        <h3 class="title">{props.title}</h3>
+        <h5 class="verse">{props.verse}</h5>
       </div>
   );
 }

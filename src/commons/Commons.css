@@ -12,6 +12,12 @@ body {
   padding-right: 6%;
 }
 
+/* Reading and Response styles */
+.reading,
+.responsorial {
+  margin-bottom: 20px;
+}
+
 .content {
   text-align: justify;
   margin-top: 10px;
@@ -21,5 +27,3 @@ body {
 .response {
   font-weight: bold;
 }
-
-
