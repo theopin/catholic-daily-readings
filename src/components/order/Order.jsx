@@ -10,7 +10,6 @@ function Order() {
 
 
   useEffect(() => {
-    console.log(101)
     fetchDataFromExternalURL()
       .then((response) => {
         console.log(response)
@@ -154,10 +153,10 @@ function Order() {
     return (
       <div className="container">
       <Theme title={sampleData.header} date={data.date}/>
-      <Reading title="First Reading" verse={data.Mass_R1.source} header= {data.Mass_R1.header}text={data.Mass_R1.text}/>
+      <Reading title="First Reading" verse={data.Mass_R1.source} summary={data.Mass_R1.heading} text={data.Mass_R1.text}/>
       <Responsorial title="Responsorial Psalm" verse={data.Mass_Ps.source}  text={data.Mass_Ps.text}/>
       <Responsorial title="Gospel Acclamation" verse={data.Mass_GA.source} text={data.Mass_GA.text}/>
-      <Reading title="Gospel" verse={data.Mass_G.source} header= {data.Mass_G.header} text={data.Mass_G.text}/>
+      <Reading title="Gospel" verse={data.Mass_G.source} summary={data.Mass_G.heading} text={data.Mass_G.text}/>
     </div>
     )
   }
@@ -165,11 +164,11 @@ function Order() {
   return (
     <div className="container">
       <Theme title={sampleData.header} date={data.date}/>
-      <Reading title="First Reading" verse={data.Mass_R1.source} header= {data.Mass_R1.header} text={data.Mass_R1.text}/>
+      <Reading title="First Reading" verse={data.Mass_R1.source} summary={data.Mass_R1.heading} text={data.Mass_R1.text}/>
       <Responsorial title="Responsorial Psalm" verse={data.Mass_Ps.source} text={data.Mass_Ps.text}/>
-      <Reading title="Second Reading" verse={data.Mass_R2.source} header= {data.Mass_R2.header} text={data.Mass_R2.text}/>
+      <Reading title="Second Reading" verse={data.Mass_R2.source} summary={data.Mass_R2.heading} text={data.Mass_R2.text}/>
       <Responsorial title="Gospel Acclamation" verse={data.Mass_GA.source} text={data.Mass_GA.text}/>
-      <Reading title="Gospel" verse={data.Mass_G.source} header= {data.Mass_G.header} text={data.Mass_G.text}/>
+      <Reading title="Gospel" verse={data.Mass_G.source} summary={data.Mass_G.heading} text={data.Mass_G.text}/>
     </div>
   );
 }

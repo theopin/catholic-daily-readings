@@ -1,7 +1,7 @@
 
 import jsonp from "jsonp"
 
-const externalURL = "http://universalis.com/Europe.England.Westminster/20230924/jsonpmass.js";
+const externalURL = "http://universalis.com/Asia.Singapore/20230925/jsonpmass.js";
 
     // const baseUrl = 'https://universalis.com/';
     // const url = `${baseUrl}${region ? region + '/' : ''}${formatDate(date)}/jsonpmass.js`;

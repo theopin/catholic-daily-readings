@@ -5,10 +5,14 @@ function Header(props) {
   // Component code here
 
   return (
-      <div className="header">
+    <div>
+          <div className="header">
         <h3 className="title">{props.title}</h3>
-        <h5 className="verse">{props.verse.replace(/\bCf\.\s+/gi, "")}</h5>
+        <h5 className="verse">{props.verse.replace(/\bcf\.\s+/gi, "")}</h5>
       </div>
+      <h5 className="summary">{props.summary}</h5>
+    </div>
+
   );
 }
 

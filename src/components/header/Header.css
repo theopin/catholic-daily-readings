@@ -14,3 +14,10 @@
   text-align: right;
   margin: 0;
 }
+
+
+.summary {
+  text-align: center;
+  margin: 0;
+  font-style: italic;
+}
