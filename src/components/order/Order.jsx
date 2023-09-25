@@ -4,12 +4,13 @@ import "../../commons/Commons.css"; // Common/shared CSS
 import Responsorial from "../responsorial/Responsorial";
 import Theme from "../theme/Theme";
 import fetchData from "./OrderFetch";
-import ReactDatePicker from "react-datepicker";
+// import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 function Order() {
   const [data, setData] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  // const [selectedDate, setSelectedDate] = useState(new Date());
+  const selectedDate = new Date()
 
   useEffect(() => {
     fetchData(selectedDate)
