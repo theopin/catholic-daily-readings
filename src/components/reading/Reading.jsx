@@ -7,7 +7,7 @@ function Reading(props) {
   const decodedString = decodeHtmlEntities(props.text);
   const paragraphs = splitTextIntoParagraphs(
     decodedString
-      .match(/[^.!?'"”’]+[.!?'"”’]+/g)
+      .match(/[^.!?]+[.!?'"”’]*(?=\s|$)/g)
       .filter((sentence) => sentence.trim() !== "")
   );
   const formattedParagraphs = paragraphs.map((paragraph, index) => (

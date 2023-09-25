@@ -3,14 +3,17 @@ import Reading from "../reading/Reading";
 import "../../commons/Commons.css"; // Common/shared CSS
 import Responsorial from "../responsorial/Responsorial";
 import Theme from "../theme/Theme";
-import fetchDataFromExternalURL from "./OrderFetch";
+import fetchData from "./OrderFetch";
 
 function Order() {
   const [data, setData] = useState(null);
 
 
   useEffect(() => {
-    fetchDataFromExternalURL()
+    const date = new Date()
+
+    
+    fetchData(date)
       .then((response) => {
         console.log(response)
         setData(response);
