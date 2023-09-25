@@ -4,8 +4,9 @@ import "../../commons/Commons.css"; // Common/shared CSS
 import Responsorial from "../responsorial/Responsorial";
 import Theme from "../theme/Theme";
 import fetchData from "./OrderFetch";
-import ReactDatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+
+import Footer from "../footer/Footer";
+import DatePicker from "../datePicker/DatePicker";
 
 function Order() {
   const [data, setData] = useState(null);
@@ -37,14 +38,12 @@ function Order() {
         <h2>Daily Mass Reading</h2>
 
         <Theme title={null} date={data.date} />
-        <div className="datepicker">
-          <ReactDatePicker
-            selected={selectedDate}
-            onChange={(date) => setSelectedDate(date)}
-            minDate={minDate}
-            maxDate={maxDate}
-          />
-        </div>
+        <DatePicker
+        selected={selectedDate}
+        setSelectedDate={setSelectedDate}
+        minDate={minDate}
+        maxDate={maxDate}
+      />
         <Reading
           title="First Reading"
           verse={data.Mass_R1.source}
@@ -67,6 +66,7 @@ function Order() {
           summary={data.Mass_G.heading}
           text={data.Mass_G.text}
         />
+        <Footer />
       </div>
     );
   }
@@ -76,14 +76,12 @@ function Order() {
       <h2>Daily Mass Reading</h2>
 
       <Theme title={null} date={data.date} />
-      <div className="datepicker">
-        <ReactDatePicker
-          selected={selectedDate}
-          onChange={(date) => setSelectedDate(date)}
-          minDate={minDate}
-          maxDate={maxDate}
-        />
-      </div>
+      <DatePicker
+        selected={selectedDate}
+        setSelectedDate={setSelectedDate}
+        minDate={minDate}
+        maxDate={maxDate}
+      />
       <Reading
         title="First Reading"
         verse={data.Mass_R1.source}
@@ -112,6 +110,7 @@ function Order() {
         summary={data.Mass_G.heading}
         text={data.Mass_G.text}
       />
+      <Footer />
     </div>
   );
 }
