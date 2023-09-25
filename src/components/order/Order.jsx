@@ -37,7 +37,7 @@ function Order() {
       <div className="container">
         <h2>Daily Mass Reading</h2>
 
-        <Theme title={null} date={data.date} />
+        <Theme title={data.day} date={data.date} />
         <DatePicker
         selected={selectedDate}
         setSelectedDate={setSelectedDate}
@@ -75,7 +75,7 @@ function Order() {
     <div className="container">
       <h2>Daily Mass Reading</h2>
 
-      <Theme title={null} date={data.date} />
+      <Theme title={data.day} date={data.date} />
       <DatePicker
         selected={selectedDate}
         setSelectedDate={setSelectedDate}
