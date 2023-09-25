@@ -10,9 +10,10 @@ import "react-datepicker/dist/react-datepicker.css";
 function Order() {
   const [data, setData] = useState(null);
   // const [selectedDate, setSelectedDate] = useState(new Date());
-  const selectedDate = new Date()
+
 
   useEffect(() => {
+    const selectedDate = new Date()
     fetchData(selectedDate)
       .then((response) => {
         console.log(response);
