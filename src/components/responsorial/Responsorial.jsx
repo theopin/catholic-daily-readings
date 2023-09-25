@@ -4,6 +4,16 @@ import "../../commons/Commons.css"; // Common/shared CSS
 import Header from "../header/Header";
 
 function Responsorial(props) {
+
+  if (!props.text) {
+
+    return (
+    <div className="responsorial">
+      <Header title={props.title} verse={props.verse} summary= {props.summary}/>
+    </div>
+  );
+  }
+
   const lines = decodeHtmlEntities(props.text)
   .match(/[^.!?]+[.!?'"”’]*(?=\s|$)/g)
         .filter(sentence => sentence.trim() !== '');

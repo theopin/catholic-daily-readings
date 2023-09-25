@@ -4,15 +4,21 @@ import "../../commons/Commons.css"; // Common/shared CSS
 import Responsorial from "../responsorial/Responsorial";
 import Theme from "../theme/Theme";
 import fetchData from "./OrderFetch";
-// import ReactDatePicker from "react-datepicker";
+import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 function Order() {
   const [data, setData] = useState(null);
-  // const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const currentDate = new Date();
+  const minDate = new Date();
+  minDate.setDate(currentDate.getDate() - 3);
+
+  const maxDate = new Date();
+  maxDate.setDate(currentDate.getDate() + 9);
 
   useEffect(() => {
-    const selectedDate = new Date()
     fetchData(selectedDate)
       .then((response) => {
         console.log(response);
@@ -21,8 +27,7 @@ function Order() {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  //}, [selectedDate]);
-    }, []);
+  }, [selectedDate]);
 
   if (!data) {
     return <div></div>;
@@ -30,13 +35,16 @@ function Order() {
     return (
       <div className="container">
         <h2>Daily Mass Reading</h2>
-        {/* <div className="datepicker">
+
+        <Theme title={null} date={data.date} />
+        <div className="datepicker">
           <ReactDatePicker
             selected={selectedDate}
             onChange={(date) => setSelectedDate(date)}
+            minDate={minDate}
+            maxDate={maxDate}
           />
-        </div> */}
-        <Theme title={null} date={data.date} />
+        </div>
         <Reading
           title="First Reading"
           verse={data.Mass_R1.source}
@@ -66,13 +74,16 @@ function Order() {
   return (
     <div className="container">
       <h2>Daily Mass Reading</h2>
-      {/* <div className="datepicker">
+
+      <Theme title={null} date={data.date} />
+      <div className="datepicker">
         <ReactDatePicker
           selected={selectedDate}
           onChange={(date) => setSelectedDate(date)}
+          minDate={minDate}
+          maxDate={maxDate}
         />
-      </div> */}
-      <Theme title={null} date={data.date} />
+      </div>
       <Reading
         title="First Reading"
         verse={data.Mass_R1.source}

@@ -23,7 +23,8 @@ h2 {
 }
 
 .datepicker {
-  float: right;
+  text-align: right;
+  margin-bottom: 20px;
 }
 
 .content {
