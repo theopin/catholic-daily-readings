@@ -11,7 +11,6 @@ function Order() {
   const [data, setData] = useState(null);
   // const [selectedDate, setSelectedDate] = useState(new Date());
 
-
   useEffect(() => {
     const selectedDate = new Date()
     fetchData(selectedDate)
@@ -22,7 +21,8 @@ function Order() {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [selectedDate]);
+  //}, [selectedDate]);
+    }, []);
 
   if (!data) {
     return <div></div>;
