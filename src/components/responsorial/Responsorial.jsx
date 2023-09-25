@@ -5,7 +5,7 @@ import Header from "../header/Header";
 
 function Responsorial(props) {
   const lines = decodeHtmlEntities(props.text)
-        .match(/[^.!?]+[.!?]/g)
+  .match(/[^.!?'"”’]+[.!?'"”’]+/g)
         .filter(sentence => sentence.trim() !== '');
   const formattedResponse = [];
   let formattedVerse = [];
