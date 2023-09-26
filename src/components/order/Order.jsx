@@ -36,7 +36,6 @@ function Order() {
     return (
       <div className="container">
         <h2>Daily Mass Reading</h2>
-
         <Theme title={data.day} date={data.date} />
         <DatePicker
         selected={selectedDate}
