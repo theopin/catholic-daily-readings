@@ -12,12 +12,6 @@ function Order() {
   const [data, setData] = useState(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const currentDate = new Date();
-  const minDate = new Date();
-  minDate.setDate(currentDate.getDate() - 3);
-
-  const maxDate = new Date();
-  maxDate.setDate(currentDate.getDate() + 9);
 
   useEffect(() => {
     fetchData(selectedDate)
@@ -40,8 +34,6 @@ function Order() {
         <DatePicker
         selected={selectedDate}
         setSelectedDate={setSelectedDate}
-        minDate={minDate}
-        maxDate={maxDate}
       />
         <Reading
           title="First Reading"
@@ -78,8 +70,6 @@ function Order() {
       <DatePicker
         selected={selectedDate}
         setSelectedDate={setSelectedDate}
-        minDate={minDate}
-        maxDate={maxDate}
       />
       <Reading
         title="First Reading"

@@ -5,13 +5,21 @@ import "react-datepicker/dist/react-datepicker.css";
 function DatePicker(props) {
   // Component code here
 
+  const currentDate = new Date();
+  const minDate = new Date();
+  minDate.setDate(currentDate.getDate() - 3);
+
+  const maxDate = new Date();
+  maxDate.setDate(currentDate.getDate() + 8);
+
+
   return (
     <div className="datepicker">
     <ReactDatePicker
       selected={props.selected}
       onChange={(date) => props.setSelectedDate(date)}
-      minDate={props.minDate}
-      maxDate={props.maxDate}
+      minDate={minDate}
+      maxDate={maxDate}
     />
   </div>
   );
