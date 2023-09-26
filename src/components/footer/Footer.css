@@ -1,4 +1,6 @@
 /* Header styles */
-.theme {
-  text-align: center;
+.footer-text {
+  text-align: left;
+  font-size: 0.6em;
+  margin-bottom: 10px;
 }
