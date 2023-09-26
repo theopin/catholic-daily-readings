@@ -4,15 +4,22 @@ import "../../commons/Commons.css"; // Common/shared CSS
 import Responsorial from "../responsorial/Responsorial";
 import Theme from "../theme/Theme";
 import fetchData from "./OrderFetch";
-// import ReactDatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+
+import Footer from "../footer/Footer";
+import DatePicker from "../datePicker/DatePicker";
 
 function Order() {
   const [data, setData] = useState(null);
-  // const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const currentDate = new Date();
+  const minDate = new Date();
+  minDate.setDate(currentDate.getDate() - 3);
+
+  const maxDate = new Date();
+  maxDate.setDate(currentDate.getDate() + 9);
 
   useEffect(() => {
-    const selectedDate = new Date()
     fetchData(selectedDate)
       .then((response) => {
         console.log(response);
@@ -21,8 +28,7 @@ function Order() {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  //}, [selectedDate]);
-    }, []);
+  }, [selectedDate]);
 
   if (!data) {
     return <div></div>;
@@ -30,13 +36,13 @@ function Order() {
     return (
       <div className="container">
         <h2>Daily Mass Reading</h2>
-        {/* <div className="datepicker">
-          <ReactDatePicker
-            selected={selectedDate}
-            onChange={(date) => setSelectedDate(date)}
-          />
-        </div> */}
-        <Theme title={null} date={data.date} />
+        <Theme title={data.day} date={data.date} />
+        <DatePicker
+        selected={selectedDate}
+        setSelectedDate={setSelectedDate}
+        minDate={minDate}
+        maxDate={maxDate}
+      />
         <Reading
           title="First Reading"
           verse={data.Mass_R1.source}
@@ -59,6 +65,7 @@ function Order() {
           summary={data.Mass_G.heading}
           text={data.Mass_G.text}
         />
+        <Footer />
       </div>
     );
   }
@@ -66,13 +73,14 @@ function Order() {
   return (
     <div className="container">
       <h2>Daily Mass Reading</h2>
-      {/* <div className="datepicker">
-        <ReactDatePicker
-          selected={selectedDate}
-          onChange={(date) => setSelectedDate(date)}
-        />
-      </div> */}
-      <Theme title={null} date={data.date} />
+
+      <Theme title={data.day} date={data.date} />
+      <DatePicker
+        selected={selectedDate}
+        setSelectedDate={setSelectedDate}
+        minDate={minDate}
+        maxDate={maxDate}
+      />
       <Reading
         title="First Reading"
         verse={data.Mass_R1.source}
@@ -101,6 +109,7 @@ function Order() {
         summary={data.Mass_G.heading}
         text={data.Mass_G.text}
       />
+      <Footer />
     </div>
   );
 }

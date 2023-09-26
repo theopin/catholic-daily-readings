@@ -3,15 +3,17 @@ import "./Theme.css"; // Component-specific CSS
 
 function Theme(props) {
   // Component code here
-
+  const formattedLine = props.title
+    .replace(/<\/?[^>]+(>|$)/g, "")
+    .split(/&#160;&#160;/g);
+  const elements = formattedLine.map((part, index) => (
+    <h3 key={index}>{part}</h3>
+  ));
   return (
     <div className="theme">
-    <h2>{props.title}</h2>
-    <h4>{props.date}</h4> 
+      <div>{elements}</div>
+      <h4>{props.date}</h4>
     </div>
-
-
-  
   );
 }
 

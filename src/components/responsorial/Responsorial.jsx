@@ -4,42 +4,53 @@ import "../../commons/Commons.css"; // Common/shared CSS
 import Header from "../header/Header";
 
 function Responsorial(props) {
-  const lines = decodeHtmlEntities(props.text)
-  .match(/[^.!?]+[.!?'"”’]*(?=\s|$)/g)
-        .filter(sentence => sentence.trim() !== '');
-  const formattedResponse = [];
-  let formattedVerse = [];
 
-  let response = ""
+  if (!props.text) {
 
-  lines.forEach((line, index) => {
-    if (index === 0 || response.toUpperCase().includes(line.toUpperCase().trim())) {
-      if(index !== 0) {
+    return (
+    <div className="responsorial">
+      <Header title={props.title} verse={props.verse} summary= {props.summary}/>
+    </div>
+  );
+  }
+
+    const lines = decodeHtmlEntities(props.text)
+    .match(/[^.!?]+[.!?'"”’]*(?=\s|$)/g)
+          .filter(sentence => sentence.trim() !== '');
+    const formattedResponse = [];
+    let formattedVerse = [];
+
+    let response = ""
+
+    lines.forEach((line, index) => {
+
+      if (index === 0 || (response.includes(line.trim().toUpperCase()) && !response.includes(lines[index - 1].trim().toUpperCase()))) {
+        if(index !== 0) {
+          formattedResponse.push(
+            <div key={"R" + props.title + index} className="r-verse">
+            {formattedVerse}
+            </div>
+          )
+          formattedVerse = [];
+        } else {
+          response = line.replace(/\(\d+[a-zA-Z]?\)/g, '').trim().toUpperCase()
+        }
+
         formattedResponse.push(
-          <div key={"R" + props.title + index} className="r-verse">
-          {formattedVerse}
+                <div key={"V" + props.title + index} className="response">
+                {"R. " + line.replace(/\(\d+[a-zA-Z]?\)/g, '').trim() }
+                </div>
+              )
+
+        
+      } else {
+        formattedVerse.push(
+          <div key={props.title + index}>
+          {line.trim()}
           </div>
         )
-        formattedVerse = [];
-      } else {
-        response = line.replace(/\(\d+[a-zA-Z]?\)/g, '').trim() 
       }
-
-      formattedResponse.push(
-              <div key={"V" + props.title + index} className="response">
-              {"R. " + line.replace(/\(\d+[a-zA-Z]?\)/g, '').trim() }
-              </div>
-            )
-
-      
-    } else {
-      formattedVerse.push(
-        <div key={props.title + index}>
-        {line.trim()}
-        </div>
-      )
-    }
-  })
+    })
 
   return (
     <div className="responsorial">
