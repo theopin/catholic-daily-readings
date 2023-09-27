@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 import Reading from "../reading/Reading";
 import Responsorial from "../responsorial/Responsorial";
@@ -9,15 +8,13 @@ import DatePicker from "../datePicker/DatePicker";
 
 import "../../commons/Commons.css";
 
-import fetchData  from "./OrderFetch";
-
+import fetchData from "./OrderFetch";
 
 function Order(props) {
   const [data, setData] = useState(null);
   const [selectedDate, setSelectedDate] = useState(props.date || new Date());
-  const { id } = useParams(); 
+  console.log(props);
 
-  console.log(id)
   useEffect(() => {
     fetchData(selectedDate)
       .then((response) => {
@@ -38,7 +35,9 @@ function Order(props) {
       <h2>Daily Mass Reading</h2>
 
       <Theme title={data.day} date={data.date} />
-      <DatePicker selected={selectedDate} setSelectedDate={setSelectedDate} />
+      { props.date && (
+        <DatePicker selected={selectedDate} setSelectedDate={setSelectedDate} />
+      )}
       <Reading
         title="First Reading"
         verse={data.Mass_R1.source}
@@ -50,7 +49,7 @@ function Order(props) {
         verse={data.Mass_Ps.source}
         text={data.Mass_Ps.text}
       />
-      {data.Mass_R2 && (
+      { data.Mass_R2 && (
         <Reading
           title="Second Reading"
           verse={data.Mass_R2.source}

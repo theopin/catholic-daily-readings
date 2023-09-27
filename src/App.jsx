@@ -11,10 +11,8 @@ function App() {
 
   return (
     <Routes>
-      <Route exact path="/" element={<Order date={today} />}>
-        <Route path="/:date" element={<Order/>}></Route>
-      </Route>
-      <Route path="/sunday" element={<Order date={nextSunday} />}></Route>
+      <Route exact path="/" element={<Order  />} />
+      <Route exact path="/sunday" element={<Order date={nextSunday} />} />
     </Routes>
   );
 }
