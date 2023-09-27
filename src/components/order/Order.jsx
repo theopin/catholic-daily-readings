@@ -13,7 +13,6 @@ import fetchData from "./OrderFetch";
 function Order(props) {
   const [data, setData] = useState(null);
   const [selectedDate, setSelectedDate] = useState(props.date || new Date());
-  console.log(props);
 
   useEffect(() => {
     fetchData(selectedDate)
@@ -35,7 +34,7 @@ function Order(props) {
       <h2>Daily Mass Reading</h2>
 
       <Theme title={data.day} date={data.date} />
-      { props.date && (
+      { !props.date && (
         <DatePicker selected={selectedDate} setSelectedDate={setSelectedDate} />
       )}
       <Reading
