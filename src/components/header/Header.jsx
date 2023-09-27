@@ -3,16 +3,21 @@ import "./Header.css"; // Component-specific CSS
 
 function Header(props) {
   // Component code here
+  const formattedLine = props.title
+    .replace(/<\/?[^>]+(>|$)/g, "")
+    .replace(/week/g, "Week")
+    .split(/&#160;&#160;/g);
+  const elements = formattedLine.map((part, index) => {
+    part = part.replace("&#160;", " ")
+    return (<h3 key={index}>{part}</h3>)
+  }
 
+  );
   return (
-    <div>
-          <div className="header">
-        <h3 className="title">{props.title}</h3>
-        <h5 className="verse">{props.verse.replace(/(\D)(\d)/, '$1 $2').replace(/\bcf\.\s*/gi, "")}</h5>
-      </div>
-      <h5 className="summary">{props.summary}</h5>
+    <div className="theme">
+      <div>{elements}</div>
+      <h4>{props.date}</h4>
     </div>
-
   );
 }
 

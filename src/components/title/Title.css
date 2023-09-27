@@ -1,0 +1,36 @@
+/* Style for the container */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Vertically and horizontally center content */
+}
+
+/* Individual Reading and Response text styles */
+.title {
+  margin: 0;
+}
+
+.verse {
+  margin: 0;
+}
+
+/* Apply flex to h3 and h5 to ensure horizontal alignment */
+.title,
+.verse {
+  display: flex;
+  align-items: center;
+}
+
+.title h3 {
+  text-align: left;
+}
+
+.verse h5 {
+  text-align: right;
+}
+
+.summary {
+  text-align: center;
+  margin: 0;
+  font-style: italic;
+}
