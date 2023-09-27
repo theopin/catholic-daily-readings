@@ -13,9 +13,7 @@ import Options from "../options/Options";
 function Order(props) {
   const [data, setData] = useState(null);
   const [selectedDate, setSelectedDate] = useState(props.date || new Date());
-  const [selectedRegion, setSelectedRegion] = useState(
-    props.date || new Date()
-  );
+  const [selectedRegion, setSelectedRegion] = useState("asia.singapore" );
 
   useEffect(() => {
     fetchData(selectedRegion, selectedDate)
