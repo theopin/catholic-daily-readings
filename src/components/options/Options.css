@@ -9,12 +9,11 @@
 }
  
 .custom-element {
-  width: 150px; /* Set a fixed width for the dropdown */
+  width: 100px; /* Set a fixed width for the dropdown */
   margin-right: 10px;
 
 }
 .custom-element:last-child {
-  width: 150px; /* Set a fixed width for the dropdown */
   margin-right: 0;
 }
 
