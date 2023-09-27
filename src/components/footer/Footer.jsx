@@ -7,7 +7,7 @@ function Footer(props) {
   return (
     // eslint-disable-next-line react/style-prop-object
     <div>
-    <hr></hr>
+    <hr/>
       <div className="footer-text">
         Copyright &#169; 1996-2023 Universalis Publishing Limited: see
         www.universalis.com. Scripture readings from the Jerusalem Bible are

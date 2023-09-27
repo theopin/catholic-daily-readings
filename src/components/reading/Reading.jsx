@@ -4,6 +4,18 @@ import Header from "../header/Header";
 
 function Reading(props) {
   // Component code here
+  const formattedParagraphs = createFormattedParagraphs(props);
+
+  return (
+    <div className="reading">
+      <Header title={props.title} verse={props.verse} summary={props.summary} />
+
+      <div className="content">{formattedParagraphs}</div>
+    </div>
+  );
+}
+
+function createFormattedParagraphs(props) {
   const decodedString = decodeHtmlEntities(props.text);
   const paragraphs = splitTextIntoParagraphs(
     decodedString
@@ -15,14 +27,7 @@ function Reading(props) {
       {paragraph}
     </p>
   ));
-
-  return (
-    <div className="reading">
-      <Header title={props.title} verse={props.verse} summary={props.summary} />
-
-      <div className="content">{formattedParagraphs}</div>
-    </div>
-  );
+  return formattedParagraphs;
 }
 
 function decodeHtmlEntities(htmlString) {
