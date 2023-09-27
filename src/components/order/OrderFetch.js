@@ -4,7 +4,7 @@ function fetchData(region, date) {
   const baseUrl = "https://universalis.com/";
 
   const url = `${baseUrl}${region.value ? region.value + "/" : ""}${moment(date).format('YYYYMMDD')}/jsonpmass.js`;
-  console.log(url)
+  console.log(url, 101)
 
   return new Promise((resolve, reject) => {
     jsonp(url, (err, data) => {

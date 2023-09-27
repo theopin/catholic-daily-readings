@@ -1,7 +1,56 @@
-/* Header styles */
+/* Add styles for the options container */
 .options {
-  max-width: 18.7%;
+  max-width: 30%;
   text-align: right;
+  font-family: "Arial";
   margin-bottom: 20px;
 }
 
+/* Style for the custom dropdown */
+.custom-dropdown {
+  margin-bottom: 10px;
+}
+
+.custom-dropdown label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.custom-dropdown select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Style for the custom date picker */
+.custom-datepicker {
+  margin-bottom: 10px;
+}
+
+.custom-datepicker label {
+  /* display: block; */
+  margin-bottom: 5px;
+}
+
+.custom-datepicker input[type="date"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+
+input[type="date"] {
+  font-family: Arial, sans-serif;
+}
+
+/* Style the placeholder text (if needed) */
+input[type="date"]::placeholder {
+  font-family: Arial, sans-serif;
+}
+
+/* Style the selected date (if needed) */
+input[type="date"]::-webkit-datetime-edit {
+  font-family: Arial, sans-serif;
+}
