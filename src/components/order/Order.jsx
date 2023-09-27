@@ -14,7 +14,7 @@ function Order(props) {
   const [data, setData] = useState(null);
   const [selectedDate, setSelectedDate] = useState(props.date || new Date());
   const [selectedRegion, setSelectedRegion] = useState("asia.singapore" );
-
+  console.log(props.date)
   useEffect(() => {
     fetchData(selectedRegion, selectedDate)
       .then((response) => {
@@ -24,7 +24,7 @@ function Order(props) {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [selectedRegion, selectedDate]);
+  }, [selectedRegion, selectedDate, props.date]);
 
   if (!data) {
     return <div></div>;
