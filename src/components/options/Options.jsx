@@ -32,7 +32,7 @@ function Options(props) {
       <ReactDropdown
         options={regionOptions}
         onChange={(region) => props.setSelectedRegion(region)}
-        value={defaultOption}
+        value={props.selectedRegion}
         placeholder="Select an option"
       />
 

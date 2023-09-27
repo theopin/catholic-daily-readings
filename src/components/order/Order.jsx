@@ -36,7 +36,7 @@ function Order(props) {
 
       <Theme title={data.day} date={data.date} />
       { !props.date && (
-        <Options selectedCountry={selectedRegion} setSelectedRegion={setSelectedRegion} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+        <Options selectedRegion={selectedRegion} setSelectedRegion={setSelectedRegion} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
       )}
       <Reading
         title="First Reading"
