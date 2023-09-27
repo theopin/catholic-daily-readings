@@ -50,6 +50,7 @@ function Options(props) {
       {option.label}
     </option>
   ));
+
   return (
     <div className="options">
 
@@ -57,7 +58,8 @@ function Options(props) {
 
 
       <div className="button custom-element">
-        <Link to={props.date ? "/" : "/sunday"}>
+        <Link to={props.date ? "/" : "/sunday"} onClick={() => window.location.href= props.date ? "/" : "/sunday"}>
+
           <button>{props.date ? "Weekday" : "Sunday"}</button>
         </Link>
       </div>
