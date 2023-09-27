@@ -50,11 +50,6 @@ function Options(props) {
       {option.label}
     </option>
   ));
-<<<<<<< HEAD
-  console.log(props.date, props.date ? "/" : "/sunday",props.date ? "Weekday" : "Sunday")
-=======
-
->>>>>>> main
   return (
     <div className="options">
 
