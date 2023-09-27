@@ -9,6 +9,7 @@ function Responsorial(props) {
     decodeHtmlEntities(props.text)
       .match(/[^.!?]+[.!?'"”’]*(?=\s|$)/g)
       .filter((sentence) => sentence.trim() !== "");
+  
   const formattedResponse = props.text && createFormattedResponse(lines, props);
 
   return (
