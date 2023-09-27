@@ -13,7 +13,9 @@ import Options from "../options/Options";
 function Order(props) {
   const [data, setData] = useState(null);
   const [selectedDate, setSelectedDate] = useState(props.date || new Date());
-  const [selectedRegion, setSelectedRegion] = useState(props.date || new Date());
+  const [selectedRegion, setSelectedRegion] = useState(
+    props.date || new Date()
+  );
 
   useEffect(() => {
     fetchData(selectedRegion, selectedDate)
@@ -32,12 +34,18 @@ function Order(props) {
 
   return (
     <div className="container">
+      <Options
+        date={props.date}
+        selectedRegion={selectedRegion}
+        setSelectedRegion={setSelectedRegion}
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+      />
+
       <h2>Daily Mass Reading</h2>
 
       <Header title={data.day} date={data.date} />
-      { !props.date && (
-        <Options selectedRegion={selectedRegion} setSelectedRegion={setSelectedRegion} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
-      )}
+
       <Reading
         title="First Reading"
         verse={data.Mass_R1.source}
@@ -49,7 +57,7 @@ function Order(props) {
         verse={data.Mass_Ps.source}
         text={data.Mass_Ps.text}
       />
-      { data.Mass_R2 && (
+      {data.Mass_R2 && (
         <Reading
           title="Second Reading"
           verse={data.Mass_R2.source}

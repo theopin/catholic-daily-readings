@@ -4,12 +4,17 @@
   justify-content: flex-end; /* Align children to the right side */
   background-color: #f0f0f0; /* Background color for the entire "options" container */
   padding: 10px; /* Add padding for spacing */
+  margin-top: 10px;
+  
 }
-
-/* Style for the custom dropdown */
-.custom-dropdown {
-  margin-right: 20px; /* Add spacing between the dropdown and date picker */
-  width: 150; /* Set a fixed width for the dropdown */
+ 
+.custom-element {
+  width: 150px; /* Set a fixed width for the dropdown */
+  margin-right: 10px;
+}
+.custom-element:last-child {
+  width: 150px; /* Set a fixed width for the dropdown */
+  margin-right: 0;
 }
 
 .custom-dropdown select {
@@ -20,10 +25,6 @@
   background-color: #fff; /* Background color for the select element */
 }
 
-/* Style for the custom date picker */
-.custom-datepicker {
-  width: 150; /* Set a fixed width for the date picker */
-}
 
 .custom-datepicker input[type="date"] {
   width: 100%;
@@ -34,8 +35,8 @@
 }
 
 /* Style the labels for consistency */
-.custom-dropdown label,
-.custom-datepicker label {
+.custom-element label,
+.custom-element label {
   display: block;
   margin-bottom: 5px;
   background-color: #f0f0f0; /* Background color for the labels */

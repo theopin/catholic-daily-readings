@@ -52,7 +52,7 @@ function Options(props) {
   return (
     <div className="options">
 
-      <div className="custom-dropdown">
+      <div className="custom-dropdown custom-element">
         <select
           id="region"
           onChange={(e) => props.setSelectedRegion(e.target.value)}
@@ -62,7 +62,8 @@ function Options(props) {
         </select>
       </div>
 
-      <div className="custom-datepicker">
+      {!props.date && (
+      <div className="custom-datepicker custom-element">
         <input
           type="date"
           id="datepicker"
@@ -72,6 +73,7 @@ function Options(props) {
           max={maxDate.toISOString().split("T")[0]}
         />
       </div>
+      )}
     </div>
   );
 }
