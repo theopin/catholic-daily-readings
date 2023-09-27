@@ -24,7 +24,7 @@ function Order(props) {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [selectedRegion, selectedDate, props.date]);
+  }, [selectedRegion, selectedDate]);
 
   if (!data) {
     return <div></div>;
