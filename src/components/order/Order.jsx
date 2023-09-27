@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
 import Reading from "../reading/Reading";
-import "../../commons/Commons.css"; // Common/shared CSS
 import Responsorial from "../responsorial/Responsorial";
 import Theme from "../theme/Theme";
-import fetchData from "./OrderFetch";
-
 import Footer from "../footer/Footer";
 import DatePicker from "../datePicker/DatePicker";
+
+import "../../commons/Commons.css";
+
+import fetchData  from "./OrderFetch";
+
 
 function Order(props) {
   const [data, setData] = useState(null);
   const [selectedDate, setSelectedDate] = useState(props.date || new Date());
+  const { id } = useParams(); 
 
+  console.log(id)
   useEffect(() => {
     fetchData(selectedDate)
       .then((response) => {

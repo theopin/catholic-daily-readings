@@ -4,10 +4,12 @@ import "../../commons/Commons.css"; // Common/shared CSS
 import Header from "../header/Header";
 
 function Responsorial(props) {
-  const lines = decodeHtmlEntities(props.text)
-    .match(/[^.!?]+[.!?'"”’]*(?=\s|$)/g)
-    .filter((sentence) => sentence.trim() !== "");
-  const formattedResponse = createFormattedResponse(lines, props);
+  const lines =
+    props.text &&
+    decodeHtmlEntities(props.text)
+      .match(/[^.!?]+[.!?'"”’]*(?=\s|$)/g)
+      .filter((sentence) => sentence.trim() !== "");
+  const formattedResponse = props.text && createFormattedResponse(lines, props);
 
   return (
     <div className="responsorial">
