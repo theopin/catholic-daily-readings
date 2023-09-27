@@ -4,18 +4,19 @@ import Reading from "../reading/Reading";
 import Responsorial from "../responsorial/Responsorial";
 import Theme from "../theme/Theme";
 import Footer from "../footer/Footer";
-import DatePicker from "../datePicker/DatePicker";
 
 import "../../commons/Commons.css";
 
 import fetchData from "./OrderFetch";
+import Options from "../options/Options";
 
 function Order(props) {
   const [data, setData] = useState(null);
   const [selectedDate, setSelectedDate] = useState(props.date || new Date());
+  const [selectedRegion, setSelectedRegion] = useState(props.date || new Date());
 
   useEffect(() => {
-    fetchData(selectedDate)
+    fetchData(selectedRegion, selectedDate)
       .then((response) => {
         console.log(response);
         setData(response);
@@ -23,7 +24,7 @@ function Order(props) {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [selectedDate]);
+  }, [selectedRegion, selectedDate]);
 
   if (!data) {
     return <div></div>;
@@ -35,7 +36,7 @@ function Order(props) {
 
       <Theme title={data.day} date={data.date} />
       { !props.date && (
-        <DatePicker selected={selectedDate} setSelectedDate={setSelectedDate} />
+        <Options selectedCountry={selectedRegion} setSelectedRegion={setSelectedRegion} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
       )}
       <Reading
         title="First Reading"

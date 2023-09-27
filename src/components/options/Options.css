@@ -1,5 +1,7 @@
 /* Header styles */
-.datepicker {
+.options {
+  max-width: 18.7%;
   text-align: right;
   margin-bottom: 20px;
 }
+
