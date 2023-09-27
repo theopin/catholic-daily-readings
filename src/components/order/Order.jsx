@@ -8,9 +8,9 @@ import fetchData from "./OrderFetch";
 import Footer from "../footer/Footer";
 import DatePicker from "../datePicker/DatePicker";
 
-function Order() {
+function Order(props) {
   const [data, setData] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(props.date || new Date());
 
 
   useEffect(() => {
