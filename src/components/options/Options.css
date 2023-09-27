@@ -8,6 +8,7 @@
   
 }
  
+
 .custom-element {
   width: 100px; /* Set a fixed width for the dropdown */
   margin-right: 10px;
@@ -16,6 +17,8 @@
 .custom-element:last-child {
   margin-right: 0;
 }
+
+/* icon */
 
 button {
   padding: 5px;

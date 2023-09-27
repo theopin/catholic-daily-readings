@@ -50,16 +50,17 @@ function Options(props) {
       {option.label}
     </option>
   ));
-  console.log(props.date)
   return (
     <div className="options">
+
+{/* icon and name */}
+
+
       <div className="button custom-element">
-      <Link to={props.date ? "/" : "/sunday"}>
-      <button >{props.date ? "Weekday" : "Sunday"}</button>
-      </Link>
+        <Link to={props.date ? "/" : "/sunday"}>
+          <button>{props.date ? "Weekday" : "Sunday"}</button>
+        </Link>
       </div>
-
-
 
       <div className="custom-dropdown custom-element">
         <select
