@@ -8,7 +8,6 @@ function fetchData(date) {
   return new Promise((resolve, reject) => {
     jsonp(url, (err, data) => {
       if (err) {
-        console.log(10101);
         reject(err);
       } else {
         resolve(data);
