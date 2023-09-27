@@ -6,13 +6,14 @@ function Title(props) {
 
   return (
     <div>
-          <div className="header">
+      <div className="header">
         <h3 className="title">{props.title}</h3>
-        <h5 className="verse">{props.verse.replace(/(\D)(\d)/, '$1 $2').replace(/\bcf\.\s*/gi, "")}</h5>
+        <h5 className="verse">
+          {props.verse.replace(/(\D)(\d)/, "$1 $2").replace(/\bcf\.\s*/gi, "")}
+        </h5>
       </div>
       <h5 className="summary">{props.summary}</h5>
     </div>
-
   );
 }
 
