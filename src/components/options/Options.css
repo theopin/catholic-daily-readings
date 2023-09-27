@@ -1,19 +1,15 @@
-/* Add styles for the options container */
+/* Style for the parent container */
 .options {
-  max-width: 30%;
-  text-align: right;
-  font-family: "Arial";
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end; /* Align children to the right side */
+  background-color: #f0f0f0; /* Background color for the entire "options" container */
+  padding: 10px; /* Add padding for spacing */
 }
 
 /* Style for the custom dropdown */
 .custom-dropdown {
-  margin-bottom: 10px;
-}
-
-.custom-dropdown label {
-  display: block;
-  margin-bottom: 5px;
+  margin-right: 20px; /* Add spacing between the dropdown and date picker */
+  width: 150; /* Set a fixed width for the dropdown */
 }
 
 .custom-dropdown select {
@@ -21,16 +17,12 @@
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  background-color: #fff; /* Background color for the select element */
 }
 
 /* Style for the custom date picker */
 .custom-datepicker {
-  margin-bottom: 10px;
-}
-
-.custom-datepicker label {
-  /* display: block; */
-  margin-bottom: 5px;
+  width: 150; /* Set a fixed width for the date picker */
 }
 
 .custom-datepicker input[type="date"] {
@@ -38,7 +30,21 @@
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 3px;
+  background-color: #fff; /* Background color for the input element */
 }
+
+/* Style the labels for consistency */
+.custom-dropdown label,
+.custom-datepicker label {
+  display: block;
+  margin-bottom: 5px;
+  background-color: #f0f0f0; /* Background color for the labels */
+  padding: 5px; /* Add padding for spacing */
+  font-weight: bold; /* Make labels bold if desired */
+}
+
+
+
 
 
 input[type="date"] {
