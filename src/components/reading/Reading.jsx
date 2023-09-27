@@ -1,14 +1,13 @@
 import React from "react";
 import "../../commons/Commons.css"; // Common/shared CSS
-import Header from "../header/Header";
-
+import Title from "../title/Title";
 function Reading(props) {
   // Component code here
   const formattedParagraphs = createFormattedParagraphs(props);
 
   return (
     <div className="reading">
-      <Header title={props.title} verse={props.verse} summary={props.summary} />
+      <Title title={props.title} verse={props.verse} summary={props.summary} />
 
       <div className="content">{formattedParagraphs}</div>
     </div>

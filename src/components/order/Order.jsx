@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import Reading from "../reading/Reading";
 import Responsorial from "../responsorial/Responsorial";
-import Theme from "../theme/Theme";
 import Footer from "../footer/Footer";
+import Header from "../header/Header";
 
 import "../../commons/Commons.css";
 
@@ -34,7 +34,7 @@ function Order(props) {
     <div className="container">
       <h2>Daily Mass Reading</h2>
 
-      <Theme title={data.day} date={data.date} />
+      <Header title={data.day} date={data.date} />
       { !props.date && (
         <Options selectedRegion={selectedRegion} setSelectedRegion={setSelectedRegion} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
       )}

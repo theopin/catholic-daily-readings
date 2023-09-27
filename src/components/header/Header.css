@@ -1,23 +1,9 @@
-/* Header styles within Reading and Response */
-.header {
-  display: flex;
-  justify-content: space-between;
-}
-
-/* Individual Reading and Response text styles */
-.title {
-  text-align: left;
-  margin: 0;
-}
-
-.verse {
-  text-align: right;
-  margin: 0;
-}
-
-
-.summary {
+/* Header styles */
+.theme {
   text-align: center;
-  margin: 0;
-  font-style: italic;
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin: 10px;
 }

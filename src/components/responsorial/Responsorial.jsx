@@ -1,7 +1,7 @@
 import React from "react";
 import "./Responsorial.css"; // Component-specific CSS
 import "../../commons/Commons.css"; // Common/shared CSS
-import Header from "../header/Header";
+import Title from "../title/Title";
 
 function Responsorial(props) {
   const lines =
@@ -13,7 +13,7 @@ function Responsorial(props) {
 
   return (
     <div className="responsorial">
-      <Header title={props.title} verse={props.verse} />
+      <Title title={props.title} verse={props.verse} />
       {props.text && <div className="content">{formattedResponse}</div>}
     </div>
   );
