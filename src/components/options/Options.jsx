@@ -50,7 +50,6 @@ function Options(props) {
       {option.label}
     </option>
   ));
-
   return (
     <div className="options">
 
@@ -59,12 +58,11 @@ function Options(props) {
 
       <div className="button custom-element">
         <Link to={props.date ? "/" : "/sunday"} onClick={() => window.location.href= props.date ? "/" : "/sunday"}>
-
           <button>{props.date ? "Weekday" : "Sunday"}</button>
         </Link>
       </div>
 
-      <div className="custom-dropdown custom-element">
+      <div className="custom-element">
         <select
           id="region"
           onChange={(e) => props.setSelectedRegion(e.target.value)}
@@ -75,7 +73,7 @@ function Options(props) {
       </div>
 
       {!props.date && (
-        <div className="custom-datepicker custom-element">
+        <div className="custom-element">
           <input
             type="date"
             id="datepicker"
