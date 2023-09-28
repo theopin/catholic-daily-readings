@@ -10,7 +10,6 @@ function App() {
   nextSunday.setDate(today.getDate() + daysUntilSunday);
 
   const [selectedRegion, setSelectedRegion] = useState('asia.singapore');
-  console.log(selectedRegion);
   return (
     <Routes>
       <Route

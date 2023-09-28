@@ -54,7 +54,7 @@ function createFormattedParagraphs(text) {
   const decodedString = decodeHtmlEntities(text);
   const paragraphs = splitTextIntoParagraphs(
     decodedString
-      .match(/[^.!?]+[.!?'"”’]*(?=\s|$)/g)
+      .match(/[^.!?]+[.!?'"”’)]*(?=\s|$)/g)
       .filter((sentence) => sentence.trim() !== ''),
   );
   const formattedParagraphs = paragraphs.map((paragraph, index) => (
