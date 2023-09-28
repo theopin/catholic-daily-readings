@@ -6,7 +6,7 @@ import './Options.css'; // Component-specific CSS
 
 function Options(props) {
   const {
-    date, selectedRegion, setSelectedRegion, selectedDate, setSelectedDate,
+    isSundayMode, selectedRegion, setSelectedRegion, selectedDate, setSelectedDate,
   } = props;
 
   const regionOptions = [
@@ -60,12 +60,12 @@ function Options(props) {
 
       <div className="button custom-element">
         <reactRouterDom.Link
-          to={date ? '/' : '/sunday'}
+          to={isSundayMode ? '/' : '/sunday'}
           onClick={() => {
-            window.location.href = date ? '/' : '/sunday';
+            window.location.href = isSundayMode ? '/' : '/sunday';
           }}
         >
-          <button type="button">{date ? 'Weekday' : 'Sunday'}</button>
+          <button type="button">{isSundayMode ? 'Sunday' : 'Weekday'}</button>
         </reactRouterDom.Link>
       </div>
 
@@ -79,7 +79,7 @@ function Options(props) {
         </select>
       </div>
 
-      {!date && (
+      {!isSundayMode && (
         <div className="custom-element">
           <input
             type="date"
@@ -96,7 +96,7 @@ function Options(props) {
 }
 
 Options.propTypes = {
-  date: PropTypes.instanceOf(Date).isRequired,
+  isSundayMode: PropTypes.bool.isRequired,
   selectedRegion: PropTypes.string.isRequired,
   selectedDate: PropTypes.instanceOf(Date).isRequired,
   setSelectedRegion: PropTypes.func.isRequired,

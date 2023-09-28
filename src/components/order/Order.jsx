@@ -12,7 +12,7 @@ import fetchData from './OrderFetch';
 import Options from '../options/Options';
 
 function Order(props) {
-  const { date } = props;
+  const { date, isSundayMode } = props;
 
   const [data, setData] = useState(null);
   const [selectedDate, setSelectedDate] = useState(date);
@@ -32,7 +32,7 @@ function Order(props) {
   return (
     <div className="container">
       <Options
-        date={date}
+        isSundayMode={isSundayMode}
         selectedRegion={selectedRegion}
         setSelectedRegion={setSelectedRegion}
         selectedDate={selectedDate}
@@ -80,6 +80,7 @@ function Order(props) {
 
 Order.propTypes = {
   date: PropTypes.instanceOf(Date).isRequired,
+  isSundayMode: PropTypes.bool.isRequired,
 };
 
 export default Order;
