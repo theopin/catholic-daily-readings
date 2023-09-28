@@ -4,42 +4,53 @@ import PropTypes from 'prop-types';
 import * as reactRouterDom from 'react-router-dom';
 import './Options.css'; // Component-specific CSS
 
+// Convert the country code to the corresponding emoji flag
+function getFlagEmoji(countryCode) {
+  if (countryCode === '') return '';
+
+  return countryCode
+    .toUpperCase()
+    .split('')
+    .map((char) => String.fromCodePoint(char.charCodeAt(0) + 127397))
+    .join('');
+}
+
 function Options(props) {
   const {
     isSundayMode, selectedRegion, setSelectedRegion, selectedDate, setSelectedDate,
   } = props;
 
   const regionOptions = [
-    { value: 'africa.kenya', label: 'Kenya' },
-    { value: 'africa.madagascar', label: 'Madagascar' },
-    { value: 'africa.nigeria', label: 'Nigeria' },
-    { value: 'africa.safrica', label: 'South Africa' },
-    { value: 'asia.india', label: 'India' },
-    { value: 'asia.malaysia', label: 'Malaysia' },
-    { value: 'asia.singapore', label: 'Singapore' },
-    { value: 'americas.brazil', label: 'Brazil' },
-    { value: 'australia', label: 'Australia' },
-    { value: 'canada', label: 'Canada' },
-    { value: 'europe', label: 'Europe' },
-    { value: 'europe.belarus', label: 'Belarus' },
-    { value: 'europe.denmark', label: 'Denmark' },
-    { value: 'europe.england', label: 'England' },
-    { value: 'europe.estonia', label: 'Estonia' },
-    { value: 'europe.finland', label: 'Finland' },
-    { value: 'europe.france', label: 'France' },
-    { value: 'europe.ireland', label: 'Ireland' },
-    { value: 'europe.italy', label: 'Italy' },
-    { value: 'europe.malta', label: 'Malta' },
-    { value: 'europe.netherlands', label: 'Netherlands' },
-    { value: 'europe.poland', label: 'Poland' },
-    { value: 'europe.scotland', label: 'Scotland' },
-    { value: 'europe.slovakia', label: 'Slovakia' },
-    { value: 'europe.sweden', label: 'Sweden' },
-    { value: 'europe.wales', label: 'Wales' },
-    { value: 'meast.sarabia', label: 'Saudi Arabia' },
-    { value: 'nz', label: 'New Zealand' },
-    { value: 'philippines', label: 'Philippines' },
-    { value: 'usa', label: 'USA' },
+    { value: 'africa.kenya', label: 'Kenya', code: 'KE' },
+    { value: 'africa.madagascar', label: 'Madagascar', code: 'MG' },
+    { value: 'africa.nigeria', label: 'Nigeria', code: 'NG' },
+    { value: 'africa.safrica', label: 'South Africa', code: 'ZA' },
+    { value: 'asia.india', label: 'India', code: 'IN' },
+    { value: 'asia.malaysia', label: 'Malaysia', code: 'MY' },
+    { value: 'asia.singapore', label: 'Singapore', code: 'SG' },
+    { value: 'americas.brazil', label: 'Brazil', code: 'BR' },
+    { value: 'australia', label: 'Australia', code: 'AU' },
+    { value: 'canada', label: 'Canada', code: 'CA' },
+    { value: 'europe', label: 'Europe', code: '' }, // No code specified for Europe
+    { value: 'europe.belarus', label: 'Belarus', code: 'BY' },
+    { value: 'europe.denmark', label: 'Denmark', code: 'DK' },
+    { value: 'europe.england', label: 'England', code: 'GB' },
+    { value: 'europe.estonia', label: 'Estonia', code: 'EE' },
+    { value: 'europe.finland', label: 'Finland', code: 'FI' },
+    { value: 'europe.france', label: 'France', code: 'FR' },
+    { value: 'europe.ireland', label: 'Ireland', code: 'IE' },
+    { value: 'europe.italy', label: 'Italy', code: 'IT' },
+    { value: 'europe.malta', label: 'Malta', code: 'MT' },
+    { value: 'europe.netherlands', label: 'Netherlands', code: 'NL' },
+    { value: 'europe.poland', label: 'Poland', code: 'PL' },
+    { value: 'europe.scotland', label: 'Scotland', code: 'GB' },
+    { value: 'europe.slovakia', label: 'Slovakia', code: 'SK' },
+    { value: 'europe.sweden', label: 'Sweden', code: 'SE' },
+    { value: 'europe.wales', label: 'Wales', code: 'GB' },
+    { value: 'meast.sarabia', label: 'Saudi Arabia', code: 'SA' },
+    { value: 'nz', label: 'New Zealand', code: 'NZ' },
+    { value: 'philippines', label: 'Philippines', code: 'PH' },
+    { value: 'usa', label: 'USA', code: 'US' },
   ];
 
   const currentDate = new Date();
@@ -51,7 +62,7 @@ function Options(props) {
 
   const regionOptionsDiv = regionOptions.map((option) => (
     <option key={option.value} value={option.value}>
-      {option.label}
+      {`${option.label}  ${getFlagEmoji(option.code)}`}
     </option>
   ));
   return (
