@@ -5,7 +5,7 @@ import './Title.css'; // Component-specific CSS
 
 function Title(props) {
   // Component code here
-  const { title, verse, summary = null } = props;
+  const { title, verse, summary } = props;
   return (
     <div>
       <div className="header">
@@ -14,7 +14,7 @@ function Title(props) {
           {verse.replace(/(\D)(\d)/, '$1 $2').replace(/\bcf\.\s*/gi, '')}
         </h5>
       </div>
-      <h5 className="summary">{summary}</h5>
+      {summary !== '' && <h5 className="summary">{summary}</h5>}
     </div>
   );
 }

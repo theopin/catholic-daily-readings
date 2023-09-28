@@ -70,7 +70,7 @@ function Responsorial(props) {
 
   return (
     <div className="responsorial">
-      <Title title={title} verse={verse} />
+      <Title title={title} verse={verse} summary="" />
       {text && <div className="content">{formattedResponse}</div>}
     </div>
   );

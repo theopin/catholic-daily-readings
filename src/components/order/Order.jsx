@@ -15,7 +15,7 @@ function Order(props) {
   const { date } = props;
 
   const [data, setData] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(date || new Date());
+  const [selectedDate, setSelectedDate] = useState(date);
   const [selectedRegion, setSelectedRegion] = useState('asia.singapore');
   useEffect(() => {
     fetchData(selectedRegion, selectedDate)

@@ -50,8 +50,8 @@ function splitTextIntoParagraphs(sentences) {
   return newParagraphs;
 }
 
-function createFormattedParagraphs(props) {
-  const decodedString = decodeHtmlEntities(props.text);
+function createFormattedParagraphs(text) {
+  const decodedString = decodeHtmlEntities(text);
   const paragraphs = splitTextIntoParagraphs(
     decodedString
       .match(/[^.!?]+[.!?'"”’]*(?=\s|$)/g)
@@ -66,12 +66,11 @@ function createFormattedParagraphs(props) {
 }
 
 function Reading(props) {
-  // Component code here
   const {
     title, verse, summary, text,
   } = props;
-  const formattedParagraphs = createFormattedParagraphs(text);
 
+  const formattedParagraphs = createFormattedParagraphs(text);
   return (
     <div className="reading">
       <Title title={title} verse={verse} summary={summary} />

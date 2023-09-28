@@ -22,7 +22,7 @@ function Header(props) {
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  date: PropTypes.instanceOf(Date).isRequired,
+  date: PropTypes.string.isRequired,
 
 };
 

@@ -6,7 +6,7 @@ import './Options.css'; // Component-specific CSS
 
 function Options(props) {
   const {
-    date = null, selectedRegion, setSelectedRegion, selectedDate, setSelectedDate,
+    date, selectedRegion, setSelectedRegion, selectedDate, setSelectedDate,
   } = props;
 
   const regionOptions = [
@@ -98,7 +98,7 @@ function Options(props) {
 Options.propTypes = {
   date: PropTypes.instanceOf(Date).isRequired,
   selectedRegion: PropTypes.string.isRequired,
-  selectedDate: PropTypes.string.isRequired,
+  selectedDate: PropTypes.instanceOf(Date).isRequired,
   setSelectedRegion: PropTypes.func.isRequired,
   setSelectedDate: PropTypes.func.isRequired,
 };
