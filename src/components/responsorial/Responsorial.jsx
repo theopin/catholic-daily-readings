@@ -1,58 +1,41 @@
-import React from "react";
-import "./Responsorial.css"; // Component-specific CSS
-import "../../commons/Commons.css"; // Common/shared CSS
-import Title from "../title/Title";
-
-function Responsorial(props) {
-  const lines =
-    props.text &&
-    decodeHtmlEntities(props.text)
-      .match(/[^.!?]+[.!?'"”’]*(?=\s|$)/g)
-      .filter((sentence) => sentence.trim() !== "");
-  
-  const formattedResponse = props.text && createFormattedResponse(lines, props);
-
-  return (
-    <div className="responsorial">
-      <Title title={props.title} verse={props.verse} />
-      {props.text && <div className="content">{formattedResponse}</div>}
-    </div>
-  );
-}
+import React, { ReactPropTypes } from 'react';
+import Title from '../title/Title';
+import './Responsorial.css'; // Component-specific CSS
+import '../../commons/Commons.css'; // Common/shared CSS
 
 function createFormattedResponse(lines, props) {
   const formattedResponse = [];
   let formattedVerse = [];
 
-  let response = "";
+  let response = '';
 
   lines.forEach((line, index) => {
     if (
-      index === 0 ||
-      (response.includes(line.trim().toUpperCase()) &&
-        !response.includes(lines[index - 1].trim().toUpperCase()))
+      index === 0
+      || (response.includes(line.trim().toUpperCase())
+        && !response.includes(lines[index - 1].trim().toUpperCase()))
     ) {
       if (index !== 0) {
         formattedResponse.push(
-          <div key={"R" + props.title + index} className="r-verse">
+          <div key={`R${props.title}${index + 1}`} className="r-verse">
             {formattedVerse}
-          </div>
+          </div>,
         );
         formattedVerse = [];
       } else {
         response = line
-          .replace(/\(\d+[a-zA-Z]?\)/g, "")
+          .replace(/\(\d+[a-zA-Z]?\)/g, '')
           .trim()
           .toUpperCase();
       }
 
       formattedResponse.push(
-        <div key={"V" + props.title + index} className="response">
-          {"R. " + line.replace(/\(\d+[a-zA-Z]?\)/g, "").trim()}
-        </div>
+        <div key={`V${props.title}${index + 1}`} className="response">
+          {`R. ${line.replace(/\(\d+[a-zA-Z]?\)/g, '').trim()}`}
+        </div>,
       );
     } else {
-      formattedVerse.push(<div key={props.title + index}>{line.trim()}</div>);
+      formattedVerse.push(<div key={`VL-${index + 1}`}>{line.trim()}</div>);
     }
   });
   return formattedResponse;
@@ -61,17 +44,40 @@ function createFormattedResponse(lines, props) {
 function decodeHtmlEntities(htmlString) {
   // Create a temporary DOM element
   const textContentArray = [];
-  const tempElement = document.createElement("div");
+  const tempElement = document.createElement('div');
 
   // Set the HTML content of the temporary element
   tempElement.innerHTML = htmlString;
 
-  tempElement.querySelectorAll("div").forEach((div) => {
+  tempElement.querySelectorAll('div').forEach((div) => {
     textContentArray.push(div.textContent.trim());
   });
 
   // Join the text content together into a single string
-  return textContentArray.join(" ");
+  return textContentArray.join(' ');
 }
+
+function Responsorial(props) {
+  const { title, verse, text } = props;
+  const lines = text
+    && decodeHtmlEntities(text)
+      .match(/[^.!?]+[.!?'"”’]*(?=\s|$)/g)
+      .filter((sentence) => sentence.trim() !== '');
+
+  const formattedResponse = text && createFormattedResponse(lines, props);
+
+  return (
+    <div className="responsorial">
+      <Title title={title} verse={verse} />
+      {text && <div className="content">{formattedResponse}</div>}
+    </div>
+  );
+}
+
+Responsorial.propTypes = {
+  title: ReactPropTypes.string.isRequired,
+  verse: ReactPropTypes.string.isRequired,
+  text: ReactPropTypes.string.isRequired,
+};
 
 export default Responsorial;

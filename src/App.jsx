@@ -1,6 +1,6 @@
-import Order from "./components/order/Order";
-
-import { Routes, Route } from "react-router-dom";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Order from './components/order/Order';
 
 function App() {
   const today = new Date();
@@ -11,7 +11,7 @@ function App() {
 
   return (
     <Routes>
-      <Route exact path="/" element={<Order  />} />
+      <Route exact path="/" element={<Order />} />
       <Route exact path="/sunday" element={<Order date={nextSunday} />} />
     </Routes>
   );
