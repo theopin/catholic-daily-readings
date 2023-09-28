@@ -5,11 +5,10 @@ import Reading from '../reading/Reading';
 import Responsorial from '../responsorial/Responsorial';
 import Footer from '../footer/Footer';
 import Header from '../header/Header';
-
-import '../../commons/Commons.css';
+import Options from '../options/Options';
 
 import fetchData from './OrderFetch';
-import Options from '../options/Options';
+import '../../commons/Commons.css';
 
 function Order(props) {
   const {
