@@ -1,4 +1,6 @@
-import React, { ReactPropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import Title from '../title/Title';
 import '../../commons/Commons.css'; // Common/shared CSS
 
@@ -80,10 +82,10 @@ function Reading(props) {
 }
 
 Reading.propTypes = {
-  title: ReactPropTypes.string.isRequired,
-  verse: ReactPropTypes.string.isRequired,
-  summary: ReactPropTypes.string.isRequired,
-  text: ReactPropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  verse: PropTypes.string.isRequired,
+  summary: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default Reading;

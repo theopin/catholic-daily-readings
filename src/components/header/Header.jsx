@@ -1,4 +1,6 @@
-import React, { ReactPropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import './Header.css'; // Component-specific CSS
 
 function Header(props) {
@@ -19,8 +21,8 @@ function Header(props) {
 }
 
 Header.propTypes = {
-  title: ReactPropTypes.string.isRequired,
-  date: ReactPropTypes.date.isRequired,
+  title: PropTypes.string.isRequired,
+  date: PropTypes.instanceOf(Date).isRequired,
 
 };
 

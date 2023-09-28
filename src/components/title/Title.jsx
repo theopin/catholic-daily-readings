@@ -1,4 +1,6 @@
-import React, { ReactPropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import './Title.css'; // Component-specific CSS
 
 function Title(props) {
@@ -18,9 +20,9 @@ function Title(props) {
 }
 
 Title.propTypes = {
-  title: ReactPropTypes.string.isRequired,
-  verse: ReactPropTypes.string.isRequired,
-  summary: ReactPropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  verse: PropTypes.string.isRequired,
+  summary: PropTypes.string.isRequired,
 };
 
 export default Title;

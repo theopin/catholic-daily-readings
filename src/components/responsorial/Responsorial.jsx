@@ -1,4 +1,6 @@
-import React, { ReactPropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import Title from '../title/Title';
 import './Responsorial.css'; // Component-specific CSS
 import '../../commons/Commons.css'; // Common/shared CSS
@@ -75,9 +77,9 @@ function Responsorial(props) {
 }
 
 Responsorial.propTypes = {
-  title: ReactPropTypes.string.isRequired,
-  verse: ReactPropTypes.string.isRequired,
-  text: ReactPropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  verse: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default Responsorial;

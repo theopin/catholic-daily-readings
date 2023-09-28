@@ -1,4 +1,5 @@
-import React, { useState, useEffect, ReactPropTypes } from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import Reading from '../reading/Reading';
 import Responsorial from '../responsorial/Responsorial';
@@ -78,7 +79,7 @@ function Order(props) {
 }
 
 Order.propTypes = {
-  date: ReactPropTypes.date.isRequired,
+  date: PropTypes.instanceOf(Date).isRequired,
 };
 
 export default Order;

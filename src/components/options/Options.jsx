@@ -1,4 +1,6 @@
-import React, { ReactPropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import * as reactRouterDom from 'react-router-dom';
 import './Options.css'; // Component-specific CSS
 
@@ -94,11 +96,11 @@ function Options(props) {
 }
 
 Options.propTypes = {
-  date: ReactPropTypes.date.isRequired,
-  selectedRegion: ReactPropTypes.string.isRequired,
-  selectedDate: ReactPropTypes.string.isRequired,
-  setSelectedRegion: ReactPropTypes.func.isRequired,
-  setSelectedDate: ReactPropTypes.func.isRequired,
+  date: PropTypes.instanceOf(Date).isRequired,
+  selectedRegion: PropTypes.string.isRequired,
+  selectedDate: PropTypes.string.isRequired,
+  setSelectedRegion: PropTypes.func.isRequired,
+  setSelectedDate: PropTypes.func.isRequired,
 };
 
 export default Options;
