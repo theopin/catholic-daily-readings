@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import * as reactRouterDom from 'react-router-dom';
 import './Options.css'; // Component-specific CSS
 
 // Convert the country code to the corresponding emoji flag
@@ -65,25 +65,29 @@ function Options(props) {
       {`${option.label}  ${getFlagEmoji(option.code)}`}
     </option>
   ));
+  const navigate = useNavigate();
   return (
     <div className="options">
       {/* icon and name */}
 
       <div className="button custom-element">
-        <reactRouterDom.Link
-          to={isSundayMode ? '/' : '/sunday'}
+        <Link
+          to={isSundayMode ? `/?region=${selectedRegion}` : `/sunday/?region=${selectedRegion}`}
           onClick={() => {
-            window.location.href = isSundayMode ? '/' : '/sunday';
+            window.location.href = isSundayMode ? `/?region=${selectedRegion}` : `/sunday/?region=${selectedRegion}`;
           }}
         >
           <button type="button">{isSundayMode ? 'Sunday' : 'Weekday'}</button>
-        </reactRouterDom.Link>
+        </Link>
       </div>
 
       <div className="custom-element">
         <select
           id="region"
-          onChange={(e) => setSelectedRegion(e.target.value)}
+          onChange={(e) => {
+            setSelectedRegion(e.target.value);
+            navigate(`${isSundayMode ? '/sunday' : ''}/?region=${e.target.value}`);
+          }}
           value={selectedRegion}
         >
           {regionOptionsDiv}

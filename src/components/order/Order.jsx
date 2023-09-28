@@ -12,12 +12,20 @@ import fetchData from './OrderFetch';
 import Options from '../options/Options';
 
 function Order(props) {
-  const { date, isSundayMode } = props;
+  const {
+    date, isSundayMode, selectedRegion, setSelectedRegion,
+  } = props;
 
   const [data, setData] = useState(null);
   const [selectedDate, setSelectedDate] = useState(date);
-  const [selectedRegion, setSelectedRegion] = useState('asia.singapore');
+
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const region = params.get('region');
+    if (region) {
+      setSelectedRegion(region);
+    }
+
     fetchData(selectedRegion, selectedDate)
       .then((response) => {
         // console.log(response);
@@ -81,6 +89,8 @@ function Order(props) {
 Order.propTypes = {
   date: PropTypes.instanceOf(Date).isRequired,
   isSundayMode: PropTypes.bool.isRequired,
+  selectedRegion: PropTypes.string.isRequired,
+  setSelectedRegion: PropTypes.func.isRequired,
 };
 
 export default Order;
