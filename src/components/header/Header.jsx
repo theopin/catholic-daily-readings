@@ -1,24 +1,29 @@
-import React from "react";
-import "./Header.css"; // Component-specific CSS
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import './Header.css'; // Component-specific CSS
 
 function Header(props) {
-  // Component code here
-  const formattedLine = props.title
-    .replace(/<\/?[^>]+(>|$)/g, "")
-    .replace(/week/g, "Week")
-    .split(/&#160;&#160;/g);
-  const elements = formattedLine.map((part, index) => {
-    part = part.replace("&#160;", " ")
-    return (<h3 key={index}>{part}</h3>)
-  }
+  const { title, date } = props;
 
-  );
+  const formattedLine = title
+    .replace(/<\/?[^>]+(>|$)/g, '')
+    .replace(/week/g, 'Week')
+    .split(/&#160;&#160;/g);
+  const elements = formattedLine.map((part, index) => (<h3 key={`part-${index + 1}`}>{part.replace('&#160;', ' ')}</h3>));
+
   return (
     <div className="theme">
       <div>{elements}</div>
-      <h4>{props.date}</h4>
+      <h4>{date}</h4>
     </div>
   );
 }
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+
+};
 
 export default Header;

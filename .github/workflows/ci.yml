@@ -1,0 +1,25 @@
+# .github/workflows/netlify.yml
+name: Continuous Integration Tests
+on:
+  pull_request:
+    branches:
+      - main # Run the workflow only on pushes to the main branch
+
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14 
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Lint Code
+        run: npm run lint
