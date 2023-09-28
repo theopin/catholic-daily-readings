@@ -5,6 +5,22 @@ import Title from '../title/Title';
 import './Responsorial.css'; // Component-specific CSS
 import '../../commons/Commons.css'; // Common/shared CSS
 
+function decodeHtmlEntities(htmlString) {
+  // Create a temporary DOM element
+  const textContentArray = [];
+  const tempElement = document.createElement('div');
+
+  // Set the HTML content of the temporary element
+  tempElement.innerHTML = htmlString;
+
+  tempElement.querySelectorAll('div').forEach((div) => {
+    textContentArray.push(div.textContent.trim());
+  });
+
+  // Join the text content together into a single string
+  return textContentArray.join(' ');
+}
+
 function createFormattedResponse(lines, props) {
   const formattedResponse = [];
   let formattedVerse = [];
@@ -33,7 +49,13 @@ function createFormattedResponse(lines, props) {
 
       formattedResponse.push(
         <div key={`V${props.title}${index + 1}`} className="response">
-          {`R. ${line.replace(/\(\d+[a-zA-Z]?\)/g, '').trim()}`}
+          {`R. ${line.trim()}`}
+        </div>,
+      );
+    } else if (line.trim().startsWith('or') && response.includes(lines[index - 1].trim().toUpperCase())) {
+      formattedResponse.push(
+        <div key={`V${props.title}${index + 1}`} className="response">
+          {`or R. ${line.split('or')[1].trim()}`}
         </div>,
       );
     } else {
@@ -43,27 +65,11 @@ function createFormattedResponse(lines, props) {
   return formattedResponse;
 }
 
-function decodeHtmlEntities(htmlString) {
-  // Create a temporary DOM element
-  const textContentArray = [];
-  const tempElement = document.createElement('div');
-
-  // Set the HTML content of the temporary element
-  tempElement.innerHTML = htmlString;
-
-  tempElement.querySelectorAll('div').forEach((div) => {
-    textContentArray.push(div.textContent.trim());
-  });
-
-  // Join the text content together into a single string
-  return textContentArray.join(' ');
-}
-
 function Responsorial(props) {
   const { title, verse, text } = props;
   const lines = text
     && decodeHtmlEntities(text)
-      .match(/[^.!?]+[.!?'"”’]*(?=\s|$)/g)
+      .match(/[^.!?]+[.!?'"”’)]*(?=\s|$)/g)
       .filter((sentence) => sentence.trim() !== '');
 
   const formattedResponse = text && createFormattedResponse(lines, props);
