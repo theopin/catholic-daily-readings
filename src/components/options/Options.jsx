@@ -62,7 +62,7 @@ function Options(props) {
         </Link>
       </div>
 
-      <div className="custom-dropdown custom-element">
+      <div className="custom-element">
         <select
           id="region"
           onChange={(e) => props.setSelectedRegion(e.target.value)}
@@ -73,7 +73,7 @@ function Options(props) {
       </div>
 
       {!props.date && (
-        <div className="custom-datepicker custom-element">
+        <div className="custom-element">
           <input
             type="date"
             id="datepicker"
