@@ -71,5 +71,6 @@ input[type="date"]::placeholder {
 
 /* Style the selected date (if needed) */
 input[type="date"]::-webkit-datetime-edit {
+  -webkit-appearance: none;
   font-family: Arial, sans-serif;
 }
