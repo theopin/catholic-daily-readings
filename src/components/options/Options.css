@@ -51,9 +51,6 @@ button {
   width: 100%;
   height: 60%;
   padding: 5px;
-
-  appearance: button;
-  -webkit-appearance: none;
   
   border: 1px solid #ccc;
   border-radius: 3px;
@@ -74,5 +71,6 @@ input[type="date"]::placeholder {
 
 /* Style the selected date (if needed) */
 input[type="date"]::-webkit-datetime-edit {
+  -webkit-appearance: none;
   font-family: Arial, sans-serif;
 }
