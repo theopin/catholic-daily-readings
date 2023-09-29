@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import DatePicker from 'react-datepicker';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'react-datepicker/dist/react-datepicker.css';
 
 import '../Options.css';
 
-function DatePicker(props) {
+function DatePickerObject(props) {
   const { selectedDate, setSelectedDate } = props;
 
   const currentDate = new Date();
@@ -15,21 +19,19 @@ function DatePicker(props) {
 
   return (
     <div className="custom-element">
-      <input
-        type="date"
-        id="datepicker"
-        onChange={(e) => setSelectedDate(e.target.value)}
-        value={selectedDate}
-        min={minDate.toISOString().split('T')[0]}
-        max={maxDate.toISOString().split('T')[0]}
+      <DatePicker
+        selected={selectedDate}
+        minDate={minDate}
+        maxDate={maxDate}
+        onChange={(date) => setSelectedDate(date)} // only when value has changed
       />
     </div>
   );
 }
 
-DatePicker.propTypes = {
+DatePickerObject.propTypes = {
   selectedDate: PropTypes.instanceOf(Date).isRequired,
   setSelectedDate: PropTypes.func.isRequired,
 };
 
-export default DatePicker;
+export default DatePickerObject;

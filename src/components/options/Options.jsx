@@ -4,7 +4,7 @@ import Region from './region/Region';
 
 import './Options.css'; // Component-specific CSS
 import SundayToggle from './sundaytoggle/SundayToggle';
-import DatePicker from './datepicker/DatePicker';
+import DatePickerObject from './datepickerobject/DatePickerObject';
 
 function Options(props) {
   const {
@@ -31,7 +31,7 @@ function Options(props) {
       />
 
       {!isSundayMode && (
-        <DatePicker
+        <DatePickerObject
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
         />
