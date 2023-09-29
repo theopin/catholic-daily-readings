@@ -10,7 +10,7 @@
  
 
 .custom-element {
-  width: 130px; /* Set a fixed width for the dropdown */
+  width: 140px; /* Set a fixed width for the dropdown */
   height: 30px;
   margin-right: 10px;
   
@@ -57,7 +57,9 @@ button {
   background-color: #fff; /* Background color for the input element */
 }
 
-
+.custom-element input [type="date"] {
+  -webkit-appearance: none;
+}
 
 
 input[type="date"] {
@@ -71,6 +73,5 @@ input[type="date"]::placeholder {
 
 /* Style the selected date (if needed) */
 input[type="date"]::-webkit-datetime-edit {
-  -webkit-appearance: none;
   font-family: Arial, sans-serif;
 }
