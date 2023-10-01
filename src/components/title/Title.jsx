@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import he from 'he';
 
 import './Title.css'; // Component-specific CSS
 
@@ -9,12 +10,12 @@ function Title(props) {
   return (
     <div>
       <div className="header">
-        <h3 className="title">{title}</h3>
+        <h3 className="title">{he.decode(title)}</h3>
         <h5 className="verse">
-          {verse.replace(/(\D)(\d)/, '$1 $2').replace(/\bcf\.\s*/gi, '')}
+          {he.decode(verse).replace(/(\D)(\d)/, '$1 $2').replace(/\bcf\.\s*/gi, '')}
         </h5>
       </div>
-      {summary !== '' && <h5 className="summary">{summary}</h5>}
+      {summary !== '' && <h5 className="summary">{he.decode(summary)}</h5>}
     </div>
   );
 }

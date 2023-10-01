@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import he from 'he';
 import Title from '../title/Title';
 import '../../commons/Commons.css'; // Common/shared CSS
 
@@ -59,7 +59,7 @@ function createFormattedParagraphs(text) {
   );
   const formattedParagraphs = paragraphs.map((paragraph, index) => (
     <p key={`reading-${index + 1}`} className="content">
-      {paragraph}
+      {he.decode(paragraph)}
     </p>
   ));
   return formattedParagraphs;
