@@ -13,9 +13,11 @@
   width: 140px; /* Set a fixed width for the dropdown */
   height: 30px;
   margin-right: 10px;
-  
 
 }
+
+
+
 .custom-element:last-child {
   margin-right: 0;
 }
@@ -49,7 +51,7 @@ button {
 
 .custom-element input {
   width: 100%;
-  height: 60%;
+  height: 120%;
   padding: 5px;
   
   border: 1px solid #ccc;
@@ -57,21 +59,20 @@ button {
   background-color: #fff; /* Background color for the input element */
 }
 
-.custom-element input [type="date"] {
-  -webkit-appearance: none;
+.custom-element .react-datepicker-wrapper {
+  width: 100%;
+  height: 100%;
+
 }
 
+.custom-element .react-datepicker__input-container {
+  width: 92%;
+  height: 60%;
 
-input[type="date"] {
-  font-family: Arial, sans-serif;
 }
 
-/* Style the placeholder text (if needed) */
-input[type="date"]::placeholder {
-  font-family: Arial, sans-serif;
-}
+.custom-element .react-datepicker__input-container input {
+  width: 100%;
+  height: 100%;
 
-/* Style the selected date (if needed) */
-input[type="date"]::-webkit-datetime-edit {
-  font-family: Arial, sans-serif;
 }
