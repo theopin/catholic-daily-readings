@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import he from 'he';
 
 import Title from '../title/Title';
 import './Responsorial.css'; // Component-specific CSS
@@ -49,17 +50,17 @@ function createFormattedResponse(lines, props) {
 
       formattedResponse.push(
         <div key={`V${props.title}${index + 1}`} className="response">
-          {`R. ${line.trim()}`}
+          {`R. ${he.decode(line).trim()}`}
         </div>,
       );
     } else if (line.trim().startsWith('or') && response.includes(lines[index - 1].trim().toUpperCase())) {
       formattedResponse.push(
         <div key={`V${props.title}${index + 1}`} className="response">
-          {`or R. ${line.split('or')[1].trim()}`}
+          {`or R. ${he.decode(line.split('or')[1]).trim()}`}
         </div>,
       );
     } else {
-      formattedVerse.push(<div key={`VL-${index + 1}`}>{line.trim()}</div>);
+      formattedVerse.push(<div key={`VL-${index + 1}`}>{he.decode(line).trim()}</div>);
     }
   });
   return formattedResponse;
