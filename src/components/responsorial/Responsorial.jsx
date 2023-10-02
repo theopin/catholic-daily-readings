@@ -103,7 +103,6 @@ function createFormattedResponse(lines, props) {
       } else {
         // Condition 3b: Split the line (combine small splits) and then feed it as divs
         const sentences = decodedLine.match(/[^;:,]+[;:,.!?'"”’)]*(?=\s|$)/g);
-        console.log(101, sentences);
 
         const formattedSentences = combineShortSentences(sentences, 55);
 
