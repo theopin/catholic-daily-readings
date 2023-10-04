@@ -6,127 +6,109 @@ import Title from '../title/Title';
 import './Responsorial.css'; // Component-specific CSS
 import '../../commons/Commons.css'; // Common/shared CSS
 
-function decodeHtmlEntities(htmlString) {
-  // Create a temporary DOM element
-  const textContentArray = [];
-  const tempElement = document.createElement('div');
+// function combineShortSentences(sentences, minLength) {
+//   const combinedSentences = [];
+//   let currentSentence = '';
 
-  // Set the HTML content of the temporary element
-  tempElement.innerHTML = htmlString;
+//   sentences.forEach((sentence) => {
+//     if ((currentSentence.length + sentence.length) < minLength) {
+//       // Add the sentence to the currentSentence variable
+//       if (currentSentence.length > 0) {
+//         currentSentence += ` ${sentence}`;
+//       } else {
+//         currentSentence = sentence;
+//       }
+//     } else {
+//       // Combine the current sentence with the next one
+//       if (currentSentence.length > 0) {
+//         combinedSentences.push(currentSentence);
+//       }
+//       currentSentence = sentence;
+//     }
+//   });
 
-  tempElement.querySelectorAll('div').forEach((div) => {
-    textContentArray.push(div.textContent.trim());
-  });
+//   // Add the last remaining sentence if it's not empty
+//   if (currentSentence.length > 0) {
+//     combinedSentences.push(currentSentence);
+//   }
 
-  // Join the text content together into a single string
-  return textContentArray.join(' ');
-}
+//   return combinedSentences;
+// }
 
-function combineShortSentences(sentences, minLength) {
-  const combinedSentences = [];
-  let currentSentence = '';
+function createFormattedResponse(response, paragraphs, props) {
+  let customResponse = response;
+  const formattedResponse = [];
 
-  sentences.forEach((sentence) => {
-    if ((currentSentence.length + sentence.length) < minLength) {
-      // Add the sentence to the currentSentence variable
-      if (currentSentence.length > 0) {
-        currentSentence += ` ${sentence}`;
-      } else {
-        currentSentence = sentence;
-      }
-    } else {
-      // Combine the current sentence with the next one
-      if (currentSentence.length > 0) {
-        combinedSentences.push(currentSentence);
-      }
-      currentSentence = sentence;
-    }
-  });
-
-  // Add the last remaining sentence if it's not empty
-  if (currentSentence.length > 0) {
-    combinedSentences.push(currentSentence);
+  if (response) {
+    formattedResponse.push(
+      <div key={`V${props.title}${0}`} className="response">
+        {`R. ${he.decode(customResponse).trim()}`}
+      </div>,
+    );
+  } else {
+    formattedResponse.push(
+      <div key={`V${props.title}${0}`} className="response">
+        {`R. ${he.decode(paragraphs[0][0]).trim()}`}
+      </div>,
+    );
+    customResponse = paragraphs[0][paragraphs[0].length - 1];
+    paragraphs[0].shift();
+    paragraphs[0].pop();
   }
 
-  return combinedSentences;
-}
-
-function createFormattedResponse(lines, props) {
-  const formattedResponse = [];
-  let formattedVerse = [];
-
-  let response = '';
-
-  lines.forEach((line, index) => {
-    // Condition 1: line is a response and is not part of the verse
-    if (
-      index === 0
-      || (response.includes(line.trim().toUpperCase())
-        && !response.includes(lines[index - 1].trim().toUpperCase()))
-    ) {
-      // Condition 1a: line is the not the first time a response is being encountered
-      if (index !== 0) {
-        formattedResponse.push(
-          <div key={`R${props.title}${index + 1}`} className="r-verse">
-            {formattedVerse}
-          </div>,
-        );
-        // reset the verse paragraph
-        formattedVerse = [];
-      } else {
-        // Condition 1b: line is the first time a response is being encountered
-        response = line
-          .replace(/\(\d+[a-zA-Z]?\)/g, '')
-          .trim()
-          .toUpperCase();
-      }
-
+  paragraphs.forEach((paragraph, paragraphIndex) => {
+    // paste lines
+    paragraph.forEach((line, lineIndex) => {
       formattedResponse.push(
-        <div key={`V${props.title}${index + 1}`} className="response">
-          {`R. ${he.decode(line).trim()}`}
+        <div key={`VL-${lineIndex + 1}-${paragraphIndex + 1}`}>
+          {line}
         </div>,
       );
-    } else if (line.trim().startsWith('or') && response.includes(lines[index - 1].trim().toUpperCase())) {
-      // Condition 2: There is an alternative response (starting with or) coming after the response
-      formattedResponse.push(
-        <div key={`V${props.title}${index + 1}`} className="response">
-          {`or R. ${he.decode(line.split('or')[1]).trim()}`}
-        </div>,
-      );
-    } else {
-      // Condition 3: The line is part of the verse paragraph
-      const decodedLine = he.decode(line).trim();
+    });
 
-      if (decodedLine.length < 70) {
-        // Condition 3a: Process the line without splitting it
-        formattedVerse.push(<div key={`VL-${index + 1}`}>{he.decode(decodedLine).trim()}</div>);
-      } else {
-        // Condition 3b: Split the line (combine small splits) and then feed it as divs
-        const sentences = decodedLine.match(/[^;:,]+[;:,.!?'"”’)]*(?=\s|$)/g);
-
-        const formattedSentences = combineShortSentences(sentences, 55);
-
-        formattedSentences.forEach((phrase, phraseIndex) => {
-          formattedVerse.push(
-            <div key={`VL-${index + 1}-${phraseIndex + 1}`}>
-              {phrase}
-            </div>,
-          );
-        });
-      }
-    }
+    formattedResponse.push(
+      <div key={`V${props.title}${paragraphIndex + 1}`} className="response">
+        {`R. ${he.decode(customResponse).trim()}`}
+      </div>,
+    );
   });
+
   return formattedResponse;
 }
 
 function Responsorial(props) {
   const { title, verse, text } = props;
-  const lines = text
-    && decodeHtmlEntities(text)
-      .match(/[^.!?]+[.!?'"”’)]*(?=\s|$)/g)
-      .filter((sentence) => sentence.trim() !== '');
 
-  const formattedResponse = text && createFormattedResponse(lines, props);
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(text, 'text/html');
+
+  // Extract the <i> tag without any tags as a single string
+  const response = doc.querySelector('i') && doc.querySelector('i').textContent;
+  // Initialize arrays
+  const paragraphs = [];
+  const divs = [...doc.querySelectorAll('div')];
+
+  let currentParagraph = [];
+
+  divs.forEach((div) => {
+    if (div.querySelector('i')) {
+      // If a new <i> tag is found, push the current paragraph and start a new one
+      if (currentParagraph.length > 0) {
+        paragraphs.push(currentParagraph);
+      }
+      currentParagraph = [];
+    } else {
+      // Exclude the <div> with <i> tag from the current paragraph
+      currentParagraph.push(div.textContent.trim());
+    }
+  });
+
+  // Push the last paragraph if it exists
+  if (currentParagraph.length > 0) {
+    paragraphs.push(currentParagraph);
+  }
+
+  const formattedResponse = text && createFormattedResponse(response, paragraphs, props);
 
   return (
     <div className="responsorial">
