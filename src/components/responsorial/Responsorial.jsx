@@ -41,13 +41,13 @@ function createFormattedResponse(response, paragraphs, props) {
 
   if (response) {
     formattedResponse.push(
-      <div key={`V${props.title}${0}`} className="response">
+      <div key={`V${props.title}-1${0}`} id={`V${props.title}-1${0}`} className="response">
         {`R. ${he.decode(customResponse).trim()}`}
       </div>,
     );
   } else {
     formattedResponse.push(
-      <div key={`V${props.title}${0}`} className="response">
+      <div key={`V${props.title}-2${0}`} id={`V${props.title}-2${0}`} className="response">
         {`R. ${he.decode(paragraphs[0][0]).trim()}`}
       </div>,
     );
@@ -58,16 +58,26 @@ function createFormattedResponse(response, paragraphs, props) {
 
   paragraphs.forEach((paragraph, paragraphIndex) => {
     // paste lines
+    let splitIndex = -1;
+    if (paragraph.length > 4) {
+      splitIndex = Math.ceil(paragraph.length / 2);
+    }
+
     paragraph.forEach((line, lineIndex) => {
+      if (splitIndex > -1 && lineIndex === splitIndex) {
+        formattedResponse.push(
+          <br key={`BR-${props.title}-3${lineIndex + 1}-${paragraphIndex + 1}`} id={`BR-${props.title}-3${lineIndex + 1}-${paragraphIndex + 1}`} />,
+        );
+      }
       formattedResponse.push(
-        <div key={`VL-${lineIndex + 1}-${paragraphIndex + 1}`}>
+        <div key={`VL-${props.title}-3${lineIndex + 1}-${paragraphIndex + 1}`} id={`VL-${props.title}-3${lineIndex + 1}-${paragraphIndex + 1}`}>
           {line}
         </div>,
       );
     });
 
     formattedResponse.push(
-      <div key={`V${props.title}${paragraphIndex + 1}`} className="response">
+      <div key={`V${props.title}-4${paragraphIndex + 1}`} id={`V${props.title}-4${paragraphIndex + 1}`} className="response">
         {`R. ${he.decode(customResponse).trim()}`}
       </div>,
     );
