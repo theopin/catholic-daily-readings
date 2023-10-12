@@ -17,13 +17,16 @@ function DatePickerObject(props) {
 
   return (
     // <div className="custom-element">
-    <div>
-      <DatePicker
-        selected={selectedDate}
-        minDate={minDate}
-        maxDate={maxDate}
-        onChange={(date) => setSelectedDate(date)} // only when value has changed
-      />
+    <div className="col-auto">
+      <button type="button" className="btn btn-primary">
+        <DatePicker
+          selected={selectedDate}
+          minDate={minDate}
+          maxDate={maxDate}
+          onChange={(date) => setSelectedDate(date)}
+        />
+      </button>
+
     </div>
   );
 }

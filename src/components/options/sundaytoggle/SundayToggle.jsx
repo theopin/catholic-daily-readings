@@ -9,7 +9,7 @@ function SundayToggle(props) {
   } = props;
 
   return (
-    <div>
+    <div className="col-auto">
       <Link
         to={
           isSundayMode

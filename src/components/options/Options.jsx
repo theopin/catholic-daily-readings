@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Region from './region/Region';
-
-import './Options.css'; // Component-specific CSS
 import SundayToggle from './sundaytoggle/SundayToggle';
 import DatePickerObject from './datepickerobject/DatePickerObject';
 
@@ -16,9 +14,7 @@ function Options(props) {
   } = props;
 
   return (
-    <div className="options">
-      {/* icon and name */}
-
+    <div className="row justify-content-end">
       <SundayToggle
         isSundayMode={isSundayMode}
         selectedRegion={selectedRegion}

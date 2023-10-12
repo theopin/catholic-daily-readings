@@ -62,15 +62,13 @@ function Region(props) {
   ));
 
   return (
-    <div>
-      <div className="btn-group">
-        <button type="button" className="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-          {`${regionObj.label}  ${getFlagEmoji(regionObj.code)}`}
-        </button>
-        <ul className="dropdown-menu dropdown-menu-lg-end">
-          {regionOptionsDiv}
-        </ul>
-      </div>
+    <div className="col-auto">
+      <button type="button" className="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+        {`${regionObj.label}  ${getFlagEmoji(regionObj.code)}`}
+      </button>
+      <ul className="dropdown-menu dropdown-menu-lg-end">
+        {regionOptionsDiv}
+      </ul>
     </div>
   );
 }
