@@ -10,7 +10,7 @@ function Title(props) {
         <p className="col-auto text-center fw-bold fs-5">
           {he.decode(title)}
         </p>
-        <p className="col-auto text-center">
+        <p className="col-auto text-center fw-bold">
           {he.decode(verse).replace(/(\D)(\d)/, '$1 $2').replace(/\bcf\.\s*/gi, '')}
         </p>
       </div>

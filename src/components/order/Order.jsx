@@ -38,6 +38,7 @@ function Order(props) {
 
   return (
     <div className="container">
+      <br />
       <Options
         isSundayMode={isSundayMode}
         selectedRegion={selectedRegion}
