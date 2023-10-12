@@ -2,7 +2,6 @@
 .options {
   display: flex;
   justify-content: flex-end; /* Align children to the right side */
-  background-color: #f0f0f0; /* Background color for the entire "options" container */
   padding: 10px; /* Add padding for spacing */
   padding-right: 0px;
   margin-top: 10px;
@@ -57,7 +56,6 @@ button {
   
   border: 1px solid #ccc;
   border-radius: 3px;
-  background-color: #fff; /* Background color for the input element */
 }
 
 .custom-element .react-datepicker-wrapper {
