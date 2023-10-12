@@ -47,8 +47,6 @@ function createFormattedResponse(response, paragraphs, props) {
 
     formattedResponse.push(
       <br key={`BRE-${props.title}-${paragraphIndex + 1}`} id={`BRE-${props.title}-${paragraphIndex + 1}`} />,
-    );
-    formattedResponse.push(
       <p key={`V${props.title}-4${paragraphIndex + 1}`} id={`V${props.title}-4${paragraphIndex + 1}`} className="fw-bold">
         {`R. ${he.decode(customResponse).trim()}`}
       </p>,
