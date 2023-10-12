@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // Convert the country code to the corresponding emoji flag
@@ -46,45 +45,30 @@ const regionOptions = [
   { value: 'usa', label: 'USA', code: 'US' },
 ];
 
-const regionOptionsDiv = regionOptions.map((option) => (
-  <option key={option.value} value={option.value}>
-    {`${option.label}  ${getFlagEmoji(option.code)}`}
-  </option>
-));
-
 function Region(props) {
   const {
     isSundayMode,
     selectedRegion,
-    setSelectedRegion,
   } = props;
 
-  const navigate = useNavigate();
+  const regionObj = regionOptions.find((item) => item.value === selectedRegion);
+
+  const regionOptionsDiv = regionOptions.map((option) => (
+    <li key={option.value} value={option.value}>
+      <a className="dropdown-item" href={`${isSundayMode ? '/sunday' : ''}/?region=${option.value}`}>
+        {`${option.label}  ${getFlagEmoji(option.code)}`}
+      </a>
+    </li>
+  ));
 
   return (
-    <div className="custom-element">
-      <select
-        id="region"
-        onChange={(e) => {
-          setSelectedRegion(e.target.value);
-          navigate(
-            `${isSundayMode ? '/sunday' : ''}/?region=${e.target.value}`,
-          );
-        }}
-        value={selectedRegion}
-      >
-        {regionOptionsDiv}
-      </select>
+    <div>
       <div className="btn-group">
-        <button type="button" className="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          Action
+        <button type="button" className="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+          {`${regionObj.label}  ${getFlagEmoji(regionObj.code)}`}
         </button>
-        <ul className="dropdown-menu">
-          <li><a className="dropdown-item" href="1">Action</a></li>
-          <li><a className="dropdown-item" href="2">Another action</a></li>
-          <li><a className="dropdown-item" href="3">Something else here</a></li>
-          <li><hr className="dropdown-divider" /></li>
-          <li><a className="dropdown-item" href="5">Separated link</a></li>
+        <ul className="dropdown-menu dropdown-menu-lg-end">
+          {regionOptionsDiv}
         </ul>
       </div>
     </div>
@@ -94,7 +78,6 @@ function Region(props) {
 Region.propTypes = {
   isSundayMode: PropTypes.bool.isRequired,
   selectedRegion: PropTypes.string.isRequired,
-  setSelectedRegion: PropTypes.func.isRequired,
 };
 
 export default Region;

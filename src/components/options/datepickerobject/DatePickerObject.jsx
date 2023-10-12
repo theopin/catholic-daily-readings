@@ -5,8 +5,6 @@ import DatePicker from 'react-datepicker';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'react-datepicker/dist/react-datepicker.css';
 
-import '../Options.css';
-
 function DatePickerObject(props) {
   const { selectedDate, setSelectedDate } = props;
 
@@ -18,7 +16,8 @@ function DatePickerObject(props) {
   maxDate.setDate(currentDate.getDate() + 8);
 
   return (
-    <div className="custom-element">
+    // <div className="custom-element">
+    <div>
       <DatePicker
         selected={selectedDate}
         minDate={minDate}

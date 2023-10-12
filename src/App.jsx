@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Order from './components/order/Order';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+import 'bootstrap/dist/css/bootstrap.css';
+
 function App() {
   const today = new Date();
   const dayOfWeek = today.getDay();

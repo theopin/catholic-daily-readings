@@ -22,7 +22,7 @@ function SundayToggle(props) {
             : `/sunday/?region=${selectedRegion}`;
         }}
       >
-        <button type="button">{isSundayMode ? 'Current' : 'Next Sunday'}</button>
+        <button type="button" className="btn btn-primary">{isSundayMode ? 'Current' : 'Next Sunday'}</button>
       </Link>
     </div>
   );

@@ -46,8 +46,6 @@ function Order(props) {
         setSelectedDate={setSelectedDate}
       />
 
-      <h2>Daily Mass Reading</h2>
-
       <Header title={data.day} date={data.date} />
 
       <Reading
