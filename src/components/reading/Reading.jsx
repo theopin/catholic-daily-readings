@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import he from 'he';
 import Title from '../title/Title';
-import '../../commons/Commons.css'; // Common/shared CSS
 
 function decodeHtmlEntities(htmlString) {
   // Create a temporary DOM element
@@ -58,7 +57,7 @@ function createFormattedParagraphs(text) {
       .filter((sentence) => sentence.trim() !== ''),
   );
   const formattedParagraphs = paragraphs.map((paragraph, index) => (
-    <p key={`reading-${index + 1}`} className="content">
+    <p key={`reading-${index + 1}`}>
       {he.decode(paragraph)}
     </p>
   ));
@@ -72,10 +71,10 @@ function Reading(props) {
 
   const formattedParagraphs = createFormattedParagraphs(text);
   return (
-    <div className="reading">
+    <div>
       <Title title={title} verse={verse} summary={summary} />
 
-      <div className="content">{formattedParagraphs}</div>
+      <div>{formattedParagraphs}</div>
     </div>
   );
 }
