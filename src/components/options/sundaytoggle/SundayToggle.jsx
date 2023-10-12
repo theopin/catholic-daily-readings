@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import '../Options.css';
-
 function SundayToggle(props) {
   const {
     isSundayMode,
@@ -11,7 +9,7 @@ function SundayToggle(props) {
   } = props;
 
   return (
-    <div className="button custom-element">
+    <div>
       <Link
         to={
           isSundayMode

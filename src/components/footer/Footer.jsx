@@ -1,15 +1,12 @@
 import React from 'react';
-import './Footer.css'; // Component-specific CSS
 
 function Footer() {
-  // Component code here
   const currentDate = new Date();
 
   return (
-    // eslint-disable-next-line react/style-prop-object
-    <div>
+    <div className="container text-center">
       <hr />
-      <div className="footer-text">
+      <p>
         Copyright &#169; 1996-
         {currentDate.getFullYear()}
         {' '}
@@ -20,7 +17,7 @@ function Footer() {
         by permission of the publishers. Text of the Psalms: Copyright &#169;
         1963, The Grail (England). Used with permission of A.P. Watt Ltd. All
         rights reserved.
-      </div>
+      </p>
     </div>
   );
 }

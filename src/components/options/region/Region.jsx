@@ -2,8 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import '../Options.css';
-
 // Convert the country code to the corresponding emoji flag
 function getFlagEmoji(countryCode) {
   if (countryCode === '') return '';
@@ -77,6 +75,18 @@ function Region(props) {
       >
         {regionOptionsDiv}
       </select>
+      <div className="btn-group">
+        <button type="button" className="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          Action
+        </button>
+        <ul className="dropdown-menu">
+          <li><a className="dropdown-item" href="1">Action</a></li>
+          <li><a className="dropdown-item" href="2">Another action</a></li>
+          <li><a className="dropdown-item" href="3">Something else here</a></li>
+          <li><hr className="dropdown-divider" /></li>
+          <li><a className="dropdown-item" href="5">Separated link</a></li>
+        </ul>
+      </div>
     </div>
   );
 }
