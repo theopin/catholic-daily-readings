@@ -6,35 +6,6 @@ import Title from '../title/Title';
 import './Responsorial.css'; // Component-specific CSS
 import '../../commons/Commons.css'; // Common/shared CSS
 
-// function combineShortSentences(sentences, minLength) {
-//   const combinedSentences = [];
-//   let currentSentence = '';
-
-//   sentences.forEach((sentence) => {
-//     if ((currentSentence.length + sentence.length) < minLength) {
-//       // Add the sentence to the currentSentence variable
-//       if (currentSentence.length > 0) {
-//         currentSentence += ` ${sentence}`;
-//       } else {
-//         currentSentence = sentence;
-//       }
-//     } else {
-//       // Combine the current sentence with the next one
-//       if (currentSentence.length > 0) {
-//         combinedSentences.push(currentSentence);
-//       }
-//       currentSentence = sentence;
-//     }
-//   });
-
-//   // Add the last remaining sentence if it's not empty
-//   if (currentSentence.length > 0) {
-//     combinedSentences.push(currentSentence);
-//   }
-
-//   return combinedSentences;
-// }
-
 function createFormattedResponse(response, paragraphs, props) {
   let customResponse = response;
   const formattedResponse = [];
