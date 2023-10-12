@@ -4,7 +4,7 @@ function Footer() {
   const currentDate = new Date();
 
   return (
-    <div className="container text-center">
+    <div className="">
       <hr />
       <p>
         Copyright &#169; 1996-

@@ -13,7 +13,7 @@ function Header(props) {
 
   return (
 
-    <div className="container text-center">
+    <div className="text-center">
       <h1>Daily Mass Reading</h1>
       <br />
       <div>{elements}</div>

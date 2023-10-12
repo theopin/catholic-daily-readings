@@ -8,7 +8,6 @@ import Header from '../header/Header';
 import Options from '../options/Options';
 
 import fetchData from './OrderFetch';
-import '../../commons/Commons.css';
 
 function Order(props) {
   const {
@@ -46,39 +45,47 @@ function Order(props) {
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
       />
-
+      <br />
       <Header title={data.day} date={data.date} />
-
+      <br />
       <Reading
         title="First Reading"
         verse={data.Mass_R1.source}
         summary={data.Mass_R1.heading}
         text={data.Mass_R1.text}
       />
+      <br />
       <Responsorial
         title="Responsorial Psalm"
         verse={data.Mass_Ps.source}
         text={data.Mass_Ps.text ? data.Mass_Ps.text : ''}
       />
+      <br />
       {data.Mass_R2 && (
-        <Reading
-          title="Second Reading"
-          verse={data.Mass_R2.source}
-          summary={data.Mass_R2.heading}
-          text={data.Mass_R2.text}
-        />
+        <>
+          <Reading
+            title="Second Reading"
+            verse={data.Mass_R2.source}
+            summary={data.Mass_R2.heading}
+            text={data.Mass_R2.text}
+          />
+          <br />
+
+        </>
       )}
       <Responsorial
         title="Gospel Acclamation"
         verse={data.Mass_GA.source}
         text={data.Mass_GA.text}
       />
+      <br />
       <Reading
         title="Gospel"
         verse={data.Mass_G.source}
         summary={data.Mass_G.heading}
         text={data.Mass_G.text}
       />
+      <br />
       <Footer />
     </div>
   );

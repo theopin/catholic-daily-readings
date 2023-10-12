@@ -10,6 +10,7 @@ function SundayToggle(props) {
 
   return (
     <div className="col-auto">
+
       <Link
         to={
           isSundayMode
@@ -22,7 +23,18 @@ function SundayToggle(props) {
             : `/sunday/?region=${selectedRegion}`;
         }}
       >
-        <button type="button" className="btn btn-primary">{isSundayMode ? 'Current' : 'Next Sunday'}</button>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => {
+            window.location.href = isSundayMode
+              ? `/?region=${selectedRegion}`
+              : `/sunday/?region=${selectedRegion}`;
+          }}
+        >
+          {isSundayMode ? 'Current' : 'Next Sunday'}
+
+        </button>
       </Link>
     </div>
   );
