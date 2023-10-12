@@ -2,20 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import he from 'he';
 
-import './Title.css'; // Component-specific CSS
-
 function Title(props) {
-  // Component code here
   const { title, verse, summary } = props;
   return (
     <div>
-      <div className="header">
-        <h3 className="title">{he.decode(title)}</h3>
-        <h5 className="verse">
+      <div className="row justify-content-between">
+        <p className="col-auto text-center fw-bold fs-5">
+          {he.decode(title)}
+        </p>
+        <p className="col-auto text-center">
           {he.decode(verse).replace(/(\D)(\d)/, '$1 $2').replace(/\bcf\.\s*/gi, '')}
-        </h5>
+        </p>
       </div>
-      {summary !== '' && <h5 className="summary">{he.decode(summary)}</h5>}
+      {summary !== '' && <p className="fst-italic text-center fw-bold">{he.decode(summary)}</p>}
     </div>
   );
 }
