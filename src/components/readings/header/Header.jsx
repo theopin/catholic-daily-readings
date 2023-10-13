@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import './Header.css'; // Component-specific CSS
+import he from 'he';
 
 function Header(props) {
   const { title, date } = props;
@@ -10,12 +9,15 @@ function Header(props) {
     .replace(/<\/?[^>]+(>|$)/g, '')
     .replace(/week/g, 'Week')
     .split(/&#160;&#160;/g);
-  const elements = formattedLine.map((part, index) => (<h3 key={`part-${index + 1}`}>{part.replace('&#160;', ' ')}</h3>));
+  const elements = formattedLine.map((part, index) => (<h4 key={`part-${index + 1}`}>{he.decode(part).trim()}</h4>));
 
   return (
-    <div className="theme">
+
+    <div className="text-center">
+      <h1>Daily Mass Reading</h1>
+      <br />
       <div>{elements}</div>
-      <h4>{date}</h4>
+      <h5>{date}</h5>
     </div>
   );
 }

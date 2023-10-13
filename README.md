@@ -1,6 +1,5 @@
-# Catholic Daily Readings App
-
-The **Catholic Daily Readings App** is a web-based tool that provides users with access to daily Mass readings, including scripture passages, psalms, and gospel readings. It allows users to select their region, date, and view the readings for the day.
+# The Catholic Corner
+The **The Catholic Corner** is a web-based tool that provides users with access to daily Mass readings, including scripture passages, psalms, and gospel readings. It allows users to select their region, date, and view the readings for the day.
 
 ## Table of Contents
 

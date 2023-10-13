@@ -1,39 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import he from 'he';
-
 import Title from '../title/Title';
-import './Responsorial.css'; // Component-specific CSS
-import '../../commons/Commons.css'; // Common/shared CSS
-
-// function combineShortSentences(sentences, minLength) {
-//   const combinedSentences = [];
-//   let currentSentence = '';
-
-//   sentences.forEach((sentence) => {
-//     if ((currentSentence.length + sentence.length) < minLength) {
-//       // Add the sentence to the currentSentence variable
-//       if (currentSentence.length > 0) {
-//         currentSentence += ` ${sentence}`;
-//       } else {
-//         currentSentence = sentence;
-//       }
-//     } else {
-//       // Combine the current sentence with the next one
-//       if (currentSentence.length > 0) {
-//         combinedSentences.push(currentSentence);
-//       }
-//       currentSentence = sentence;
-//     }
-//   });
-
-//   // Add the last remaining sentence if it's not empty
-//   if (currentSentence.length > 0) {
-//     combinedSentences.push(currentSentence);
-//   }
-
-//   return combinedSentences;
-// }
 
 function createFormattedResponse(response, paragraphs, props) {
   let customResponse = response;
@@ -41,15 +9,15 @@ function createFormattedResponse(response, paragraphs, props) {
 
   if (response) {
     formattedResponse.push(
-      <div key={`V${props.title}-1${0}`} id={`V${props.title}-1${0}`} className="response">
+      <p key={`V${props.title}-1${0}`} id={`V${props.title}-1${0}`} className="fw-bold">
         {`R. ${he.decode(customResponse).trim()}`}
-      </div>,
+      </p>,
     );
   } else {
     formattedResponse.push(
-      <div key={`V${props.title}-2${0}`} id={`V${props.title}-2${0}`} className="response">
+      <p key={`V${props.title}-2${0}`} id={`V${props.title}-2${0}`} className="fw-bold">
         {`R. ${he.decode(paragraphs[0][0]).trim()}`}
-      </div>,
+      </p>,
     );
     customResponse = paragraphs[0][paragraphs[0].length - 1];
     paragraphs[0].shift();
@@ -77,9 +45,10 @@ function createFormattedResponse(response, paragraphs, props) {
     });
 
     formattedResponse.push(
-      <div key={`V${props.title}-4${paragraphIndex + 1}`} id={`V${props.title}-4${paragraphIndex + 1}`} className="response">
+      <br key={`BRE-${props.title}-${paragraphIndex + 1}`} id={`BRE-${props.title}-${paragraphIndex + 1}`} />,
+      <p key={`V${props.title}-4${paragraphIndex + 1}`} id={`V${props.title}-4${paragraphIndex + 1}`} className="fw-bold">
         {`R. ${he.decode(customResponse).trim()}`}
-      </div>,
+      </p>,
     );
   });
 
@@ -121,9 +90,9 @@ function Responsorial(props) {
   const formattedResponse = text && createFormattedResponse(response, paragraphs, props);
 
   return (
-    <div className="responsorial">
+    <div>
       <Title title={title} verse={verse} summary="" />
-      {text && <div className="content">{formattedResponse}</div>}
+      {text && <div>{formattedResponse}</div>}
     </div>
   );
 }

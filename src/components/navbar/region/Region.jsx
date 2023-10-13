@@ -1,8 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
-import '../Options.css';
 
 // Convert the country code to the corresponding emoji flag
 function getFlagEmoji(countryCode) {
@@ -48,41 +45,44 @@ const regionOptions = [
   { value: 'usa', label: 'USA', code: 'US' },
 ];
 
-const regionOptionsDiv = regionOptions.map((option) => (
-  <option key={option.value} value={option.value}>
-    {`${option.label}  ${getFlagEmoji(option.code)}`}
-  </option>
-));
-
 function Region(props) {
   const {
-    isSundayMode,
     selectedRegion,
     setSelectedRegion,
+
   } = props;
 
-  const navigate = useNavigate();
+  const regionObj = regionOptions.find((item) => item.value === selectedRegion);
+
+  const regionOptionsDiv = regionOptions.map((option) => (
+    <button
+      key={option.value}
+      type="button"
+      value={option.value}
+      className="dropdown-item"
+      onClick={() => {
+        localStorage.setItem('region', option.value);
+        setSelectedRegion(option.value);
+      }}
+    >
+      {`${option.label}  ${getFlagEmoji(option.code)}`}
+    </button>
+  ));
 
   return (
-    <div className="custom-element">
-      <select
-        id="region"
-        onChange={(e) => {
-          setSelectedRegion(e.target.value);
-          navigate(
-            `${isSundayMode ? '/sunday' : ''}/?region=${e.target.value}`,
-          );
-        }}
-        value={selectedRegion}
-      >
+    <div className="btn-group col-auto">
+      <button type="button" className="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+        {regionObj && `${regionObj.label}  ${getFlagEmoji(regionObj.code)}`}
+        {!regionObj && 'Worldwide'}
+      </button>
+      <ul className="dropdown-menu dropdown-menu-lg-end">
         {regionOptionsDiv}
-      </select>
+      </ul>
     </div>
   );
 }
 
 Region.propTypes = {
-  isSundayMode: PropTypes.bool.isRequired,
   selectedRegion: PropTypes.string.isRequired,
   setSelectedRegion: PropTypes.func.isRequired,
 };
