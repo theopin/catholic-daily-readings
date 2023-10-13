@@ -64,7 +64,8 @@ function Region(props) {
   return (
     <div className="btn-group col-auto">
       <button type="button" className="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-        {`${regionObj.label}  ${getFlagEmoji(regionObj.code)}`}
+        {regionObj && `${regionObj.label}  ${getFlagEmoji(regionObj.code)}`}
+        {!regionObj && 'Worldwide'}
       </button>
       <ul className="dropdown-menu dropdown-menu-lg-end">
         {regionOptionsDiv}
