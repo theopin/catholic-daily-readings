@@ -14,7 +14,6 @@ function Main() {
           <p className="lead">Immerse yourself in the world of Catholic spirituality. Access a wealth of inspiring content and embrace a deeper connection with your faith.</p>
           <div className="d-grid gap-2 d-md-flex justify-content-md-start">
             <a className="btn btn-primary btn-lg px-4 me-md-2" href="/readings" role="button">Explore Mass Readings</a>
-            <button type="button" className="btn btn-outline-secondary btn-lg px-4">Default</button>
           </div>
         </div>
       </div>
