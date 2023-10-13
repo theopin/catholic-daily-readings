@@ -15,12 +15,12 @@ function SundayToggle(props) {
         to={
           isSundayMode
             ? `/readings?region=${selectedRegion}`
-            : `/readings/sunday/?region=${selectedRegion}`
+            : `/readings/sunday?region=${selectedRegion}`
         }
         onClick={() => {
           window.location.href = isSundayMode
-            ? `/readings/?region=${selectedRegion}`
-            : `/readings/sunday/?region=${selectedRegion}`;
+            ? `/readings?region=${selectedRegion}`
+            : `/readings/sunday?region=${selectedRegion}`;
         }}
       >
         <button

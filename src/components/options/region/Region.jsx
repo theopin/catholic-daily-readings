@@ -55,7 +55,7 @@ function Region(props) {
 
   const regionOptionsDiv = regionOptions.map((option) => (
     <li key={option.value} value={option.value}>
-      <a className="dropdown-item" href={`${isSundayMode ? '/sunday' : ''}/?region=${option.value}`}>
+      <a className="dropdown-item" href={`${isSundayMode ? '/readings/sunday' : ''}?region=${option.value}`}>
         {`${option.label}  ${getFlagEmoji(option.code)}`}
       </a>
     </li>
