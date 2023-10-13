@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Region from './region/Region';
 
 function Navbar(props) {
   const {
     selectedFeature,
+    selectedRegion,
+    setSelectedRegion,
   } = props;
 
   return (
@@ -22,13 +25,18 @@ function Navbar(props) {
             ? 'text-white' : 'text-secondary'}`}>Catechism</a></li> */}
           </ul>
 
-          <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-            <input type="search" className="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search" />
-          </form>
+          {/* <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            <input type="search" className="form-control
+             form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search" />
+          </form> */}
 
           <div className="text-end">
-            <button type="button" className="btn btn-outline-light me-2">Login</button>
-            <button type="button" className="btn btn-warning">Sign-up</button>
+            {/* <button type="button" className="btn btn-outline-light me-2">Login</button>
+            <button type="button" className="btn btn-warning">Sign-up</button> */}
+            <Region
+              selectedRegion={selectedRegion}
+              setSelectedRegion={setSelectedRegion}
+            />
           </div>
         </div>
       </div>
@@ -38,6 +46,9 @@ function Navbar(props) {
 
 Navbar.propTypes = {
   selectedFeature: PropTypes.string.isRequired,
+  selectedRegion: PropTypes.string.isRequired,
+  setSelectedRegion: PropTypes.func.isRequired,
+
 };
 
 export default Navbar;

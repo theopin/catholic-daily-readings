@@ -19,6 +19,8 @@ function App() {
     <div>
       <Navbar
         selectedFeature={selectedFeature}
+        selectedRegion={selectedRegion}
+        setSelectedRegion={setSelectedRegion}
       />
       <Routes>
         <Route
@@ -37,7 +39,6 @@ function App() {
               isSundayMode={false}
               setSelectedFeature={setSelectedFeature}
               selectedRegion={selectedRegion}
-              setSelectedRegion={setSelectedRegion}
             />
           )}
         />
@@ -50,7 +51,6 @@ function App() {
               isSundayMode
               setSelectedFeature={setSelectedFeature}
               selectedRegion={selectedRegion}
-              setSelectedRegion={setSelectedRegion}
             />
           )}
         />

@@ -47,18 +47,25 @@ const regionOptions = [
 
 function Region(props) {
   const {
-    isSundayMode,
     selectedRegion,
+    setSelectedRegion,
+
   } = props;
 
   const regionObj = regionOptions.find((item) => item.value === selectedRegion);
 
   const regionOptionsDiv = regionOptions.map((option) => (
-    <li key={option.value} value={option.value}>
-      <a className="dropdown-item" href={`${isSundayMode ? '/readings/sunday' : ''}?region=${option.value}`}>
-        {`${option.label}  ${getFlagEmoji(option.code)}`}
-      </a>
-    </li>
+    <button
+      key={option.value}
+      type="button"
+      value={option.value}
+      className="dropdown-item"
+      onClick={() => {
+        setSelectedRegion(option.value);
+      }}
+    >
+      {`${option.label}  ${getFlagEmoji(option.code)}`}
+    </button>
   ));
 
   return (
@@ -75,8 +82,8 @@ function Region(props) {
 }
 
 Region.propTypes = {
-  isSundayMode: PropTypes.bool.isRequired,
   selectedRegion: PropTypes.string.isRequired,
+  setSelectedRegion: PropTypes.func.isRequired,
 };
 
 export default Region;

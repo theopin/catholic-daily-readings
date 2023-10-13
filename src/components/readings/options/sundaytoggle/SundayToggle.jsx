@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 function SundayToggle(props) {
   const {
     isSundayMode,
-    selectedRegion,
   } = props;
 
   return (
@@ -14,13 +13,13 @@ function SundayToggle(props) {
       <Link
         to={
           isSundayMode
-            ? `/readings?region=${selectedRegion}`
-            : `/readings/sunday?region=${selectedRegion}`
+            ? '/readings'
+            : '/readings/sunday'
         }
         onClick={() => {
           window.location.href = isSundayMode
-            ? `/readings?region=${selectedRegion}`
-            : `/readings/sunday?region=${selectedRegion}`;
+            ? '/readings'
+            : '/readings/sunday';
         }}
       >
         <button
@@ -37,7 +36,6 @@ function SundayToggle(props) {
 
 SundayToggle.propTypes = {
   isSundayMode: PropTypes.bool.isRequired,
-  selectedRegion: PropTypes.string.isRequired,
 };
 
 export default SundayToggle;
