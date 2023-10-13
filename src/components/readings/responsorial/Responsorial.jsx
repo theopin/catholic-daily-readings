@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import he from 'he';
-
 import Title from '../title/Title';
 
 function createFormattedResponse(response, paragraphs, props) {
