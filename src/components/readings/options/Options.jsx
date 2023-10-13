@@ -6,7 +6,6 @@ import DatePickerObject from './datepickerobject/DatePickerObject';
 function Options(props) {
   const {
     isSundayMode,
-    selectedRegion,
     selectedDate,
     setSelectedDate,
   } = props;
@@ -16,7 +15,6 @@ function Options(props) {
 
       <SundayToggle
         isSundayMode={isSundayMode}
-        selectedRegion={selectedRegion}
       />
 
       {!isSundayMode && (
@@ -32,7 +30,6 @@ function Options(props) {
 
 Options.propTypes = {
   isSundayMode: PropTypes.bool.isRequired,
-  selectedRegion: PropTypes.string.isRequired,
   selectedDate: PropTypes.instanceOf(Date).isRequired,
   setSelectedDate: PropTypes.func.isRequired,
 };

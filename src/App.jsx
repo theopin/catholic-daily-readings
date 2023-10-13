@@ -13,7 +13,7 @@ function App() {
   const nextSunday = new Date(today);
   nextSunday.setDate(today.getDate() + daysUntilSunday);
 
-  const [selectedRegion, setSelectedRegion] = useState('asia.singapore');
+  const [selectedRegion, setSelectedRegion] = useState(localStorage.getItem('region') || 'asia.singapore');
   const [selectedFeature, setSelectedFeature] = useState('');
   return (
     <div>

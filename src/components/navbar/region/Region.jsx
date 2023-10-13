@@ -61,6 +61,7 @@ function Region(props) {
       value={option.value}
       className="dropdown-item"
       onClick={() => {
+        localStorage.setItem('region', option.value);
         setSelectedRegion(option.value);
       }}
     >

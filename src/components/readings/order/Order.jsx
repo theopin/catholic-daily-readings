@@ -18,8 +18,8 @@ function Order(props) {
   const [selectedDate, setSelectedDate] = useState(date);
 
   useEffect(() => {
-    console.log(selectedRegion);
     setSelectedFeature('Readings');
+
     fetchData(selectedRegion, selectedDate)
       .then((response) => {
         // console.log(response);
