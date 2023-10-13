@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Order from './components/readings/order/Order';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'bootstrap/dist/css/bootstrap.css';
 import Main from './components/main/Main';
+import Order from './components/readings/order/Order';
 import Navbar from './components/navbar/Navbar';
 
 function App() {
