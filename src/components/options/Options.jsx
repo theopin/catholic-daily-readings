@@ -15,6 +15,7 @@ function Options(props) {
 
   return (
     <div className="row justify-content-end">
+
       <SundayToggle
         isSundayMode={isSundayMode}
         selectedRegion={selectedRegion}
@@ -32,6 +33,7 @@ function Options(props) {
           setSelectedDate={setSelectedDate}
         />
       )}
+
     </div>
   );
 }

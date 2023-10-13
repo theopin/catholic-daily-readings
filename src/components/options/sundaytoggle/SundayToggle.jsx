@@ -26,11 +26,6 @@ function SundayToggle(props) {
         <button
           type="button"
           className="btn btn-primary"
-          onClick={() => {
-            window.location.href = isSundayMode
-              ? `/?region=${selectedRegion}`
-              : `/sunday/?region=${selectedRegion}`;
-          }}
         >
           {isSundayMode ? 'Current' : 'Next Sunday'}
 
