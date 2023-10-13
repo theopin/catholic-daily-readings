@@ -4,6 +4,7 @@ import Order from './components/readings/order/Order';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'bootstrap/dist/css/bootstrap.css';
 import Main from './components/main/Main';
+import Navbar from './components/navbar/Navbar';
 
 function App() {
   const today = new Date();
@@ -13,40 +14,49 @@ function App() {
   nextSunday.setDate(today.getDate() + daysUntilSunday);
 
   const [selectedRegion, setSelectedRegion] = useState('asia.singapore');
+  const [selectedFeature, setSelectedFeature] = useState('');
   return (
-    <Routes>
-      <Route
-        exact
-        path="/"
-        element={(
-          <Main />
-        )}
+    <div>
+      <Navbar
+        selectedFeature={selectedFeature}
       />
-      <Route
-        exact
-        path="/readings"
-        element={(
-          <Order
-            date={today}
-            isSundayMode={false}
-            selectedRegion={selectedRegion}
-            setSelectedRegion={setSelectedRegion}
-          />
-        )}
-      />
-      <Route
-        exact
-        path="/readings/sunday"
-        element={(
-          <Order
-            date={nextSunday}
-            isSundayMode
-            selectedRegion={selectedRegion}
-            setSelectedRegion={setSelectedRegion}
-          />
-        )}
-      />
-    </Routes>
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={(
+            <Main />
+          )}
+        />
+        <Route
+          exact
+          path="/readings"
+          element={(
+            <Order
+              date={today}
+              isSundayMode={false}
+              setSelectedFeature={setSelectedFeature}
+              selectedRegion={selectedRegion}
+              setSelectedRegion={setSelectedRegion}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/readings/sunday"
+          element={(
+            <Order
+              date={nextSunday}
+              isSundayMode
+              setSelectedFeature={setSelectedFeature}
+              selectedRegion={selectedRegion}
+              setSelectedRegion={setSelectedRegion}
+            />
+          )}
+        />
+      </Routes>
+    </div>
+
   );
 }
 

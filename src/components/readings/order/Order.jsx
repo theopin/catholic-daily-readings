@@ -11,7 +11,7 @@ import fetchData from './OrderFetch';
 
 function Order(props) {
   const {
-    date, isSundayMode, selectedRegion, setSelectedRegion,
+    date, isSundayMode, setSelectedFeature, selectedRegion, setSelectedRegion,
   } = props;
 
   const [data, setData] = useState(null);
@@ -20,6 +20,7 @@ function Order(props) {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const region = params.get('region');
+    setSelectedFeature('Readings');
     if (region) {
       setSelectedRegion(region);
     }
@@ -94,6 +95,7 @@ function Order(props) {
 Order.propTypes = {
   date: PropTypes.instanceOf(Date).isRequired,
   isSundayMode: PropTypes.bool.isRequired,
+  setSelectedFeature: PropTypes.func.isRequired,
   selectedRegion: PropTypes.string.isRequired,
   setSelectedRegion: PropTypes.func.isRequired,
 };
