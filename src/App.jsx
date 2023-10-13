@@ -4,6 +4,7 @@ import Order from './components/order/Order';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'bootstrap/dist/css/bootstrap.css';
+import Main from './components/main/Main';
 
 function App() {
   const today = new Date();
@@ -19,6 +20,13 @@ function App() {
         exact
         path="/"
         element={(
+          <Main />
+        )}
+      />
+      <Route
+        exact
+        path="/readings"
+        element={(
           <Order
             date={today}
             isSundayMode={false}
@@ -29,7 +37,7 @@ function App() {
       />
       <Route
         exact
-        path="/sunday"
+        path="/readings/sunday"
         element={(
           <Order
             date={nextSunday}

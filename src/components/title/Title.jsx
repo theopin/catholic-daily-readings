@@ -11,7 +11,7 @@ function Title(props) {
           {he.decode(title)}
         </p>
         <p className="col-auto text-center fw-medium">
-          {he.decode(verse).replace(/(\D)(\d)/, '$1 $2').replace(/\bcf\.\s*/gi, '')}
+          {he.decode(verse).replace(/(\D)(\d)/, '$1 $2').replace(/\bcf\.\s*/gi, '').replace(/,/g, ', ')}
         </p>
       </div>
       {summary !== '' && <p className="fst-italic text-center fw-semibold">{he.decode(summary)}</p>}
