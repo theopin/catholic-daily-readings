@@ -29,12 +29,12 @@ function Header(props) {
       <h5>{date}</h5>
       {
         isAlertDisplayable
-        && <br />
+        && <br className="d-print-none" />
       }
       {
         isAlertDisplayable
         && (
-        <div className="alert alert-warning alert-dismissible fade show" role="alert">
+        <div className="alert alert-warning alert-dismissible fade show d-print-none" role="alert">
           For the memorial option, please visit
           {' '}
           <a href={`https://universalis.com/${dateString}/mass.htm`} className="alert-link">the Universalis website</a>

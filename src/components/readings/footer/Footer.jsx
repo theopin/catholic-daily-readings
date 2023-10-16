@@ -4,9 +4,9 @@ function Footer() {
   const currentDate = new Date();
 
   return (
-    <div className="">
+    <div>
       <hr />
-      <p>
+      <p className="fs-6 fw-light">
         Copyright &#169; 1996-
         {currentDate.getFullYear()}
         {' '}
