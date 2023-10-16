@@ -20,7 +20,7 @@ function DatePickerObject(props) {
         min={minDate}
         max={maxDate}
         value={moment(selectedDate).format('YYYY-MM-DD')}
-        onChange={(e) => setSelectedDate(e.target.value)}
+        onChange={(e) => setSelectedDate(new Date(e.target.value))}
       />
 
     </div>

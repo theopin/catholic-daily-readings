@@ -1,15 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import he from 'he';
+import moment from 'moment';
 
 function Header(props) {
   const { title, date } = props;
 
-  const formattedLine = title
+  const formattedLines = title
     .replace(/<\/?[^>]+(>|$)/g, '')
     .replace(/week/g, 'Week')
     .split(/&#160;&#160;/g);
-  const elements = formattedLine.map((part, index) => (<h4 key={`part-${index + 1}`}>{he.decode(part).trim()}</h4>));
+
+  let isAlertDisplayable = false;
+
+  const searchIndex = formattedLines.findIndex((el) => el.includes('Ordinary Time'));
+
+  if (searchIndex > 0 && formattedLines[searchIndex].startsWith('on')) { isAlertDisplayable = true; } else { isAlertDisplayable = false; }
+
+  const elements = formattedLines.map((part, index) => (<h4 key={`part-${index + 1}`}>{he.decode(part).trim()}</h4>));
+  const dateString = moment(date, 'dddd DD MMMM YYYY').format('YYYYMMDD');
 
   return (
 
@@ -18,6 +27,22 @@ function Header(props) {
       <br />
       <div>{elements}</div>
       <h5>{date}</h5>
+      {
+        isAlertDisplayable
+        && <br className="d-print-none" />
+      }
+      {
+        isAlertDisplayable
+        && (
+        <div className="alert alert-warning alert-dismissible fade show d-print-none" role="alert">
+          For the memorial option, please visit
+          {' '}
+          <a href={`https://universalis.com/${dateString}/mass.htm`} className="alert-link">the Universalis website</a>
+          .
+        </div>
+        )
+      }
+
     </div>
   );
 }
