@@ -11,7 +11,7 @@ function Options(props) {
   } = props;
 
   return (
-    <div className="row justify-content-end">
+    <div className="row justify-content-end d-print-none">
 
       <SundayToggle
         isSundayMode={isSundayMode}

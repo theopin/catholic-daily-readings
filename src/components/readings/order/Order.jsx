@@ -33,7 +33,7 @@ function Order(props) {
 
   return (
     <div className="container">
-      <br />
+      <br className="d-print-none" />
       <Options
         isSundayMode={isSundayMode}
         selectedRegion={selectedRegion}
