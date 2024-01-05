@@ -52,7 +52,7 @@ function Order(props) {
       <br />
       <Responsorial
         title="Responsorial Psalm"
-        verse={data.Mass_Ps.source}
+        verse={data.Mass_Ps.source ? data.Mass_Ps.source : ''}
         text={data.Mass_Ps.text ? data.Mass_Ps.text : ''}
       />
       <br />
@@ -70,7 +70,7 @@ function Order(props) {
       )}
       <Responsorial
         title="Gospel Acclamation"
-        verse={data.Mass_GA.source}
+        verse={data.Mass_GA.source ? data.Mass_GA.source : ''}
         text={data.Mass_GA.text}
       />
       <br />
