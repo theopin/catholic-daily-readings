@@ -57,7 +57,6 @@ function createFormattedResponse(response, paragraphs, props) {
 
 function Responsorial(props) {
   const { title, verse, text } = props;
-
   const parser = new DOMParser();
   const doc = parser.parseFromString(text, 'text/html');
 
