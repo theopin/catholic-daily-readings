@@ -5,6 +5,7 @@ import Title from '../title/Title';
 
 function createFormattedResponse(response, paragraphs, props) {
   let customResponse = response;
+
   const formattedResponse = [];
 
   if (response) {
@@ -61,7 +62,7 @@ function Responsorial(props) {
   const doc = parser.parseFromString(text, 'text/html');
 
   // Extract the <i> tag without any tags as a single string
-  const response = doc.querySelector('i') && doc.querySelector('i').textContent;
+  let response = doc.querySelector('i') && doc.querySelector('i').textContent;
   // Initialize arrays
   const paragraphs = [];
   const divs = [...doc.querySelectorAll('div')];
@@ -74,8 +75,26 @@ function Responsorial(props) {
       if (currentParagraph.length > 0) {
         paragraphs.push(currentParagraph);
       }
+
+      if (response && response.endsWith('or')) {
+        response += ` ${div.textContent.trim()}`;
+        return;
+      }
+
       currentParagraph = [];
     } else {
+      if (div.textContent.trim() === 'or') {
+        if (!response.includes(' or ')) {
+          response += ` ${div.textContent.trim()}`;
+        }
+        return;
+      }
+
+      if (response && response.endsWith('or')) {
+        response += ` ${div.textContent.trim()}`;
+        return;
+      }
+
       // Exclude the <div> with <i> tag from the current paragraph
       currentParagraph.push(div.textContent.trim());
     }
