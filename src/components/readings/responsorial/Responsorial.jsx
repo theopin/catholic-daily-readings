@@ -5,6 +5,7 @@ import Title from '../title/Title';
 
 function createFormattedResponse(response, paragraphs, props) {
   let customResponse = response;
+
   const formattedResponse = [];
 
   if (response) {
