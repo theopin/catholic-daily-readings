@@ -1,17 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Convert the country code to the corresponding emoji flag
-function getFlagEmoji(countryCode) {
-  if (countryCode === '') return '';
-
-  return countryCode
-    .toUpperCase()
-    .split('')
-    .map((char) => String.fromCodePoint(char.charCodeAt(0) + 127397))
-    .join('');
-}
-
 const regionOptions = [
   { value: 'africa.kenya', label: 'Kenya', code: 'KE' },
   { value: 'africa.madagascar', label: 'Madagascar', code: 'MG' },
@@ -45,16 +34,26 @@ const regionOptions = [
   { value: 'usa', label: 'USA', code: 'US' },
 ];
 
+// Convert the country code to the corresponding emoji flag
+function getFlagEmoji(countryCode) {
+  if (countryCode === '') return '';
+
+  return countryCode
+    .toUpperCase()
+    .split('')
+    .map((char) => String.fromCodePoint(char.charCodeAt(0) + 127397))
+    .join('');
+}
+
 function Region(props) {
   const {
     selectedRegion,
     setSelectedRegion,
-
   } = props;
 
   const regionObj = regionOptions.find((item) => item.value === selectedRegion);
 
-  const regionOptionsDiv = regionOptions.map((option) => (
+  const regionOptionsDropdownList = regionOptions.map((option) => (
     <button
       key={option.value}
       type="button"
@@ -70,13 +69,16 @@ function Region(props) {
   ));
 
   return (
-    <div className="btn-group col-auto">
+    <div className="btn-group col-auto text-end">
+      {/* Active Country Selected */}
       <button type="button" className="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
         {regionObj && `${regionObj.label}  ${getFlagEmoji(regionObj.code)}`}
         {!regionObj && 'Worldwide'}
       </button>
+
+      {/* Dropdown list of supported countries */}
       <ul className="dropdown-menu dropdown-menu-lg-end">
-        {regionOptionsDiv}
+        {regionOptionsDropdownList}
       </ul>
     </div>
   );
