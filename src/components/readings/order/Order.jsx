@@ -11,18 +11,18 @@ import fetchData from './OrderFetch';
 
 function Order(props) {
   const {
-    date, isSundayMode, setSelectedFeature, selectedRegion,
+    date, isSundayMode, selectedRegion,
   } = props;
 
   const [data, setData] = useState(null);
   const [selectedDate, setSelectedDate] = useState(date);
 
   useEffect(() => {
-    setSelectedFeature('Readings');
+    console.log(selectedRegion);
 
-    fetchData(selectedRegion, selectedDate)
+    fetchData('SG', selectedDate)
       .then((response) => {
-        // console.log(response);
+        console.log(response);
         setData(response);
       });
   }, [selectedRegion, selectedDate]);
@@ -89,7 +89,6 @@ function Order(props) {
 Order.propTypes = {
   date: PropTypes.instanceOf(Date).isRequired,
   isSundayMode: PropTypes.bool.isRequired,
-  setSelectedFeature: PropTypes.func.isRequired,
   selectedRegion: PropTypes.string.isRequired,
 };
 

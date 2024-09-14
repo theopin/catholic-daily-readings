@@ -69,11 +69,19 @@ function Reading(props) {
     title, verse, summary, text,
   } = props;
 
+  console.log('printing');
+  console.log(title);
+  console.log(verse);
+  console.log(summary);
+  console.log(text);
+
   const formattedParagraphs = createFormattedParagraphs(text);
   return (
     <div>
+      {/* Reading Details */}
       <Title title={title} verse={verse} summary={summary} />
 
+      {/* Reading Text */}
       <div>{formattedParagraphs}</div>
     </div>
   );
