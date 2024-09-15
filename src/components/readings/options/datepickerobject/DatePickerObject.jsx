@@ -1,35 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import moment from 'moment';
+import { useDispatch, useSelector } from 'react-redux';
+import { changePickedDate } from '../../slices/PickedDateSlice';
 
-function DatePickerObject(props) {
-  const { selectedDate, setSelectedDate } = props;
+function DatePickerObject() {
+  const selectedDate = useSelector((state) => state.pickedDate.value);
+  const dispatch = useDispatch();
 
   const currentDate = new Date();
 
+  // Min and Max Date supported by Universalis API
   const minDate = moment(new Date().setDate(currentDate.getDate() - 3)).format('YYYY-MM-DD');
   const maxDate = moment(new Date().setDate(currentDate.getDate() + 8)).format('YYYY-MM-DD');
 
   return (
-    // <div className="custom-element">
     <div className="col-auto">
-
       <input
         className="form-control"
         type="date"
         min={minDate}
         max={maxDate}
-        value={moment(selectedDate).format('YYYY-MM-DD')}
-        onChange={(e) => setSelectedDate(new Date(e.target.value))}
+        value={selectedDate}
+        onChange={(e) => dispatch(changePickedDate(moment(new Date(e.target.value)).format('YYYY-MM-DD')))}
       />
-
     </div>
   );
 }
-
-DatePickerObject.propTypes = {
-  selectedDate: PropTypes.instanceOf(Date).isRequired,
-  setSelectedDate: PropTypes.func.isRequired,
-};
 
 export default DatePickerObject;

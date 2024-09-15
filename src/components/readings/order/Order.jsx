@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import { useSelector } from 'react-redux';
 import Reading from '../reading/Reading';
 import Responsorial from '../responsorial/Responsorial';
 import Footer from '../footer/Footer';
@@ -11,17 +12,14 @@ import fetchData from './OrderFetch';
 
 function Order(props) {
   const {
-    date, isSundayMode, selectedRegion,
+    isSundayMode, selectedRegion,
   } = props;
 
   const [data, setData] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(date);
+
+  const selectedDate = useSelector((state) => state.pickedDate.value);
 
   useEffect(() => {
-    console.log(selectedRegion);
-    console.log(date);
-    console.log(selectedDate);
-
     fetchData('SG', selectedDate)
       .then((response) => {
         setData(response);
@@ -38,8 +36,6 @@ function Order(props) {
       <Options
         isSundayMode={isSundayMode}
         selectedRegion={selectedRegion}
-        selectedDate={selectedDate}
-        setSelectedDate={setSelectedDate}
       />
       <br />
       <Header title={data.day} date={data.date} />
@@ -88,7 +84,6 @@ function Order(props) {
 }
 
 Order.propTypes = {
-  date: PropTypes.instanceOf(Date).isRequired,
   isSundayMode: PropTypes.bool.isRequired,
   selectedRegion: PropTypes.string.isRequired,
 };
