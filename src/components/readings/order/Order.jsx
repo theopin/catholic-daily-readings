@@ -21,6 +21,7 @@ function Order(props) {
 
   const selectedRegion = useSelector((state) => state.region.value);
 
+  // Compute date for Sunday Readings mode
   const today = new Date();
   const daysUntilSunday = 7 - today.getDay();
   const nextSunday = new Date(today);
@@ -29,6 +30,7 @@ function Order(props) {
 
   const selectedDate = useSelector((state) => state.pickedDate.value);
 
+  // API fetch triggered by change of region, picked date or change of sunday mode
   useEffect(() => {
     fetchData(selectedRegion, isSundayMode ? nextSundayString : selectedDate)
       .then((response) => {
