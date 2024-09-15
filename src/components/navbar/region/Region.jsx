@@ -1,5 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeRegion } from '../../readings/slices/RegionSlice';
 
 const regionOptions = [
   { value: 'africa.kenya', label: 'Kenya', code: 'KE' },
@@ -45,11 +46,9 @@ function getFlagEmoji(countryCode) {
     .join('');
 }
 
-function Region(props) {
-  const {
-    selectedRegion,
-    setSelectedRegion,
-  } = props;
+function Region() {
+  const selectedRegion = useSelector((state) => state.region.value);
+  const dispatch = useDispatch();
 
   const regionObj = regionOptions.find((item) => item.value === selectedRegion);
 
@@ -61,7 +60,7 @@ function Region(props) {
       className="dropdown-item"
       onClick={() => {
         localStorage.setItem('region', option.value);
-        setSelectedRegion(option.value);
+        dispatch(changeRegion(option.value));
       }}
     >
       {`${option.label}  ${getFlagEmoji(option.code)}`}
@@ -83,10 +82,5 @@ function Region(props) {
     </div>
   );
 }
-
-Region.propTypes = {
-  selectedRegion: PropTypes.string.isRequired,
-  setSelectedRegion: PropTypes.func.isRequired,
-};
 
 export default Region;

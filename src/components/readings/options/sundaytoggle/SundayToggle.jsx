@@ -16,8 +16,8 @@ function SundayToggle(props) {
         className="btn btn-primary"
         onClick={() => {
           navigate(isSundayMode
-            ? '/readings'
-            : '/readings/sunday');
+            ? '/mass/readings'
+            : '/mass/readings/sunday');
         }}
       >
         {isSundayMode ? 'Current' : 'Next Sunday'}

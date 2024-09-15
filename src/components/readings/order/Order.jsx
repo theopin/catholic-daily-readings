@@ -12,15 +12,16 @@ import fetchData from './OrderFetch';
 
 function Order(props) {
   const {
-    isSundayMode, selectedRegion,
+    isSundayMode,
   } = props;
 
   const [data, setData] = useState(null);
 
+  const selectedRegion = useSelector((state) => state.region.value);
   const selectedDate = useSelector((state) => state.pickedDate.value);
 
   useEffect(() => {
-    fetchData('SG', selectedDate)
+    fetchData(selectedRegion, selectedDate)
       .then((response) => {
         setData(response);
       });
@@ -35,7 +36,6 @@ function Order(props) {
       <br className="d-print-none" />
       <Options
         isSundayMode={isSundayMode}
-        selectedRegion={selectedRegion}
       />
       <br />
       <Header title={data.day} date={data.date} />
@@ -85,7 +85,6 @@ function Order(props) {
 
 Order.propTypes = {
   isSundayMode: PropTypes.bool.isRequired,
-  selectedRegion: PropTypes.string.isRequired,
 };
 
 export default Order;

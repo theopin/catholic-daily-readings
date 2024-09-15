@@ -26,14 +26,12 @@ const AppRouter = createBrowserRouter([
           {
             path: '',
             element: <Order
-              date={today}
               isSundayMode={false}
             />,
           },
           {
             path: 'sunday',
             element: <Order
-              date={nextSunday}
               isSundayMode
             />,
           },
