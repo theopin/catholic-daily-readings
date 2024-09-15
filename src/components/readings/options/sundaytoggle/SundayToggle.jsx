@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function SundayToggle(props) {
@@ -7,29 +7,22 @@ function SundayToggle(props) {
     isSundayMode,
   } = props;
 
+  const navigate = useNavigate();
+
   return (
     <div className="col-auto">
-
-      <Link
-        to={
-          isSundayMode
-            ? '/readings'
-            : '/readings/sunday'
-        }
+      <button
+        type="button"
+        className="btn btn-primary"
         onClick={() => {
-          window.location.href = isSundayMode
+          navigate(isSundayMode
             ? '/readings'
-            : '/readings/sunday';
+            : '/readings/sunday');
         }}
       >
-        <button
-          type="button"
-          className="btn btn-primary"
-        >
-          {isSundayMode ? 'Current' : 'Next Sunday'}
+        {isSundayMode ? 'Current' : 'Next Sunday'}
+      </button>
 
-        </button>
-      </Link>
     </div>
   );
 }

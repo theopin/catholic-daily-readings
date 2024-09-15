@@ -6,6 +6,7 @@ function Footer() {
   return (
     <div>
       <hr />
+      {/* Copyright Ack for Universalis usage */}
       <p className="fs-6 fw-light">
         Copyright &#169; 1996-
         {currentDate.getFullYear()}

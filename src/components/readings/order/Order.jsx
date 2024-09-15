@@ -19,10 +19,11 @@ function Order(props) {
 
   useEffect(() => {
     console.log(selectedRegion);
+    console.log(date);
+    console.log(selectedDate);
 
     fetchData('SG', selectedDate)
       .then((response) => {
-        console.log(response);
         setData(response);
       });
   }, [selectedRegion, selectedDate]);

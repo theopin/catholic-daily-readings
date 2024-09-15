@@ -4,7 +4,6 @@ import he from 'he';
 
 function Title(props) {
   const { title, verse, summary } = props;
-  console.log(title);
   return (
     <div>
       <div className="row justify-content-between">

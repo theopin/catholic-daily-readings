@@ -15,7 +15,7 @@ function Welcome() {
 
           {/* Quick Features Access */}
           <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-            <a className="btn btn-primary btn-lg px-4 me-md-2" href="/readings" role="button">Explore Mass Readings</a>
+            <a className="btn btn-primary btn-lg px-4 me-md-2" href="/mass/readings" role="button">Explore Mass Readings</a>
           </div>
         </div>
       </div>

@@ -21,7 +21,7 @@ const AppRouter = createBrowserRouter([
         element: <Welcome />,
       },
       {
-        path: '/readings',
+        path: '/mass/readings',
         children: [
           {
             path: '',
