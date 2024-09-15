@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { useSelector } from 'react-redux';
+import moment from 'moment';
+
 import Reading from '../reading/Reading';
 import Responsorial from '../responsorial/Responsorial';
 import Footer from '../footer/Footer';
@@ -18,14 +20,21 @@ function Order(props) {
   const [data, setData] = useState(null);
 
   const selectedRegion = useSelector((state) => state.region.value);
+
+  const today = new Date();
+  const daysUntilSunday = 7 - today.getDay();
+  const nextSunday = new Date(today);
+  nextSunday.setDate(today.getDate() + daysUntilSunday);
+  const nextSundayString = moment(nextSunday).format('YYYY-MM-DD');
+
   const selectedDate = useSelector((state) => state.pickedDate.value);
 
   useEffect(() => {
-    fetchData(selectedRegion, selectedDate)
+    fetchData(selectedRegion, isSundayMode ? nextSundayString : selectedDate)
       .then((response) => {
         setData(response);
       });
-  }, [selectedRegion, selectedDate]);
+  }, [selectedRegion, selectedDate, isSundayMode]);
 
   if (!data) {
     return <div />;
